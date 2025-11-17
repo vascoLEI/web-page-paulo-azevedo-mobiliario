@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paulo Azevedo Mobiliário</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logoicon.png">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">
+        <a href="index.html">
+        <img src="imagens/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img">
+      </a>
+      </h1>
+
+      <ul class="nav-links">
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="Página principal.html/sobre">Sobre nós</a></li>
+        <li><a href="Página principal.html/contactos">Contactos</a></li>
+      </ul>
+</nav>
+  </header>
+
+  <main class="produtos-page">
+    <section class="produtos-header">
+      <h2>Produtos</h2>
+      <p>Escolha uma categoria para filtrar os produtos.</p>
+
+      <div class="filtros">
+        <button class="filtro-btn active" data-filter="all">Todos</button>
+        <button class="filtro-btn" data-filter="sofas">Sofás</button>
+        <button class="filtro-btn" data-filter="colchoes">Colchões</button>
+        <button class="filtro-btn" data-filter="salas">Salas</button>
+        <button class="filtro-btn" data-filter="decoracao">Decoração</button>
+      </div>
+    </section>
+
+    <section class="produtos-grid-page">
+      <article class="produto-card" data-category="sofas">
+        <img src="imagens/sofá branco.jpg" alt="Sofá de 3 lugares">
+        <h3>Sofá de sala</h3>
+        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
+      </article>
+
+      <article class="produto-card" data-category="sofas">
+        <img src="imagens/sofa1.jpg" alt="Sofá de 3 lugares">
+        <h3>Sofá de sala</h3>
+        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
+      </article>
+
+      <article class="produto-card" data-category="sofas">
+        <img src="imagens/sofa2.jpg" alt="Sofá de 3 lugares">
+        <h3>Sofá de sala</h3>
+        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
+      </article>
+
+      <article class="produto-card" data-category="sofas">
+        <img src="imagens/sofa4.jpg" alt="Sofá de 3 lugares">
+        <h3>Sofá de sala</h3>
+        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
+      </article>
+
+      <article class="produto-card" data-category="sofas">
+        <img src="imagens/sofá com arrumação.jpg" alt="Sofá-cama">
+        <h3>Sofá-cama</h3>
+        <p>Ideal para visitas, com arrumação integrada.</p>
+      </article>
+
+      <article class="produto-card" data-category="colchoes">
+        <img src="imagens/colchão.jpg" alt="Colchão ortopédico">
+        <h3>Colchão Ortopédico</h3>
+        <p>Conforto e apoio para uma boa noite de sono.</p>
+      </article>
+
+      <article class="produto-card" data-category="salas">
+        <img src="imagens/sala de jantar.jpg" alt="Conjunto de sala de jantar">
+        <h3>Sala de jantar</h3>
+        <p>Mesa + 4 cadeiras, disponível em vários acabamentos.</p>
+      </article>
+
+      <article class="produto-card" data-category="decoracao">
+        <img src="imagens/espelho redondo2.jpg" alt="Espelho decorativo">
+        <h3>Espelho decorativo</h3>
+        <p>Espelho redondo ideal para hall de entrada.</p>
+      </article>
+
+      <article class="produto-card" data-category="salas">
+        <img src="imagens/sala.jpg" alt="Sala">
+        <h3>Sala</h3>
+        <p>Sala completa.</p>
+      </article>
+
+      <article class="produto-card" data-category="decoracao">
+        <img src="imagens/mesa de centro oval.jpg" alt="Mesa oval de centro">
+        <h3>Mesa oval de centro</h3>
+        <p>Mesa oval branca perfeita para a sua sala de estar.</p>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
+  </footer>
+
+  <script>
+    const filtroBtns = document.querySelectorAll(".filtro-btn");
+    const produtos = document.querySelectorAll(".produto-card");
+
+    filtroBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filtro = btn.dataset.filter;
+
+        filtroBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        produtos.forEach(prod => {
+          const categoria = prod.dataset.category;
+          if (filtro === "all" || categoria === filtro) {
+            prod.style.display = "block";
+          } else {
+            prod.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
