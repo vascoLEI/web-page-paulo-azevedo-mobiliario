@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logoicon.png">
 </head>
-
 <body>
   <header>
     <nav class="navbar">
@@ -26,110 +24,71 @@
     </nav>
   </header>
 
-  <main class="produtos-page">
-    <section class="produtos-header">
-      <h2>Produtos</h2>
-      <p>Escolha uma categoria para filtrar os produtos.</p>
+  <section class="produtos-page">
+    <div class="produtos-header">
+      <h2>Os nossos produtos</h2>
+      <p>Alguns exemplos de mobiliário, estofos e colchões disponíveis na loja.</p>
 
       <div class="filtros">
         <button class="filtro-btn active" data-filter="all">Todos</button>
-        <button class="filtro-btn" data-filter="sofas">Sofás</button>
-        <button class="filtro-btn" data-filter="colchoes">Colchões</button>
-        <button class="filtro-btn" data-filter="salas">Salas</button>
+        <button class="filtro-btn" data-filter="sala">Salas</button>
+        <button class="filtro-btn" data-filter="quarto">Quartos</button>
         <button class="filtro-btn" data-filter="decoracao">Decoração</button>
+        <button class="filtro-btn" data-filter="aparador">Aparadores</button>
       </div>
-    </section>
+    </div>
 
-    <section class="produtos-grid-page">
-      <button class="produto-card" data-category="sofas">
-        <img src="images/sofá branco.jpg" alt="Sofá de 3 lugares" onclick="abrirLightbox(this)">
-        <h3>Sofá de sala</h3>
-        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
-      </button>
-
-      <article class="produto-card" data-category="sofas">
-        <img src="images/sofa1.jpg" alt="Sofá de 3 lugares">
-        <h3>Sofá de sala</h3>
-        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
-      </article>
-
-      <article class="produto-card" data-category="sofas">
-        <img src="images/sofa2.jpg" alt="Sofá de 3 lugares">
-        <h3>Sofá de sala</h3>
-        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
-      </article>
-
-      <article class="produto-card" data-category="sofas">
-        <img src="images/sofa4.jpg" alt="Sofá de 3 lugares">
-        <h3>Sofá de sala</h3>
-        <p>Sofá confortável em tecido, várias cores disponíveis.</p>
-      </article>
-
-      <article class="produto-card" data-category="sofas">
-        <img src="images/sofá com arrumação.jpg" alt="Sofá-cama">
-        <h3>Sofá-cama</h3>
-        <p>Ideal para visitas, com arrumação integrada.</p>
-      </article>
-
-      <article class="produto-card" data-category="colchoes">
-        <img src="images/colchão.jpg" alt="Colchão ortopédico">
-        <h3>Colchão Ortopédico</h3>
-        <p>Conforto e apoio para uma boa noite de sono.</p>
-      </article>
-
-      <article class="produto-card" data-category="salas">
-        <img src="images/sala de jantar.jpg" alt="Conjunto de sala de jantar">
-        <h3>Sala de jantar</h3>
-        <p>Mesa + 4 cadeiras, disponível em vários acabamentos.</p>
-      </article>
-
-      <article class="produto-card" data-category="decoracao">
-        <img src="images/espelho redondo2.jpg" alt="Espelho decorativo">
-        <h3>Espelho decorativo</h3>
-        <p>Espelho redondo ideal para hall de entrada.</p>
-      </article>
-
-      <article class="produto-card" data-category="salas">
-        <img src="images/sala.jpg" alt="Sala">
-        <h3>Sala</h3>
-        <p>Sala completa.</p>
-      </article>
-
-      <article class="produto-card" data-category="decoracao">
-        <img src="images/mesa de centro oval.jpg" alt="Mesa oval de centro">
-        <h3>Mesa oval de centro</h3>
-        <p>Mesa oval branca perfeita para a sua sala de estar.</p>
-      </article>
-
-    </section>
-  </main>
+    <div class="produtos-grid-page" id="produtos-grid"></div>
+    
+  </section>
 
   <footer>
     <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
   </footer>
 
+  /*Here will call the listOfProducts and make all the work of putting it on products page */
+  <script src="listOfProducts.js"></script>
   <script>
-    const filtroBtns = document.querySelectorAll(".filtro-btn");
-    const produtos = document.querySelectorAll(".produto-card");
+    function renderProdutos(lista) {
+      const grid = document.getElementById('produtos-grid');
+      if (!grid) return;
 
-    filtroBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const filtro = btn.dataset.filter;
+      grid.innerHTML = lista.map(p => `
+        <article class="produto-card" data-categoria="${p.categoria}">
+          <img src="${p.imagem}" alt="${p.nome}">
+          <h3>${p.nome}</h3>
+          <p>${p.descricao || ""}</p>
+        </article>
+      `).join('');
+    }
 
-        filtroBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+    function initFiltros() {
+      const filtroBtns = document.querySelectorAll(".filtro-btn");
 
-        produtos.forEach(prod => {
-          const categoria = prod.dataset.category;
-          if (filtro === "all" || categoria === filtro) {
-            prod.style.display = "block";
-          } else {
-            prod.style.display = "none";
-          }
+      filtroBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const filtro = btn.dataset.filter;
+          const produtos = document.querySelectorAll(".produto-card");
+
+          filtroBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          produtos.forEach(prod => {
+            const categoria = prod.dataset.categoria;
+            if (filtro === "all" || categoria === filtro) {
+              prod.style.display = "block";
+            } else {
+              prod.style.display = "none";
+            }
+          });
         });
       });
+    }
+
+    window.addEventListener('load', () => {
+      renderProdutos(PRODUTOS);
+      initFiltros();
     });
   </script>
 </body>
-
 </html>
