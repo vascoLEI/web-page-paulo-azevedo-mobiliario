@@ -1,7 +1,7 @@
 # Paulo Azevedo Mobiliário – Website
 
-A modern and responsive website developed for **Paulo Azevedo Mobiliário**, a furniture and upholstery store located in Póvoa de Varzim, Portugal.  
-The goal of this project was to create a clean, simple and user-friendly online presence to showcase products and provide essential store information.
+A design of website for Paulo Azevedo Mobiliário, a store of mobile and upholstery in Póvoa de Varzim - Portugal.
+The task envisage this project was to develop a neat, clean and user-friendly online shop, promoting their goods and ensuring essential store information is available.
 
 ---
 
@@ -37,10 +37,9 @@ The goal of this project was to create a clean, simple and user-friendly online 
 
 ## About the Store
 
-**Paulo Azevedo Mobiliário** is a store in the furniture and mattress sector.  
-The store focuses on offering personalized service and custom-made solutions to satisfy each client’s needs.
-
-This website was created to strengthen the store’s digital presence and offer customers an easier way to explore available products.
+**Paulo Azevedo Mobiliário** is a shop for furniture and mattresses.
+The store prides itself on personal service and custom solutions to fit each customer.
+The website was setup to better transfer the store's offline value online and make available products easier for searching by customers.
 
 ---
 
