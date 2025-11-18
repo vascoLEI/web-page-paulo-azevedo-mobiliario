@@ -19,9 +19,9 @@
       </h1>
 
       <ul class="nav-links">
-        <li><a href="products.html">Produtos</a></li>
+        <li><a href="products.html">Ver Produtos</a></li>
         <li><a href="about.html">Sobre nós</a></li>
-        <li><a href="contacts.html">Contactos</a></li>
+        <li><a href="contacts.html"> Nossos Contactos</a></li>
       </ul>
     </nav>
   </header>
@@ -116,6 +116,26 @@
       document.getElementById('lightbox').style.display = 'none';
     }
   </script>
+  <script>
+  const header = document.querySelector('header');
+  const hero   = document.querySelector('.hero');
+
+  function updateHeaderOnScroll() {
+    const heroHeight = hero.offsetHeight;
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    // quando scroll > altura do hero - 80px, encolhe
+    if (scrollY > heroHeight - 80) {
+      header.classList.add('header-small');
+    } else {
+      header.classList.remove('header-small');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeaderOnScroll);
+  window.addEventListener('load', updateHeaderOnScroll);
+  window.addEventListener('resize', updateHeaderOnScroll);
+</script>
 </body>
 
 </html>
