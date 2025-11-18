@@ -46,7 +46,7 @@ The website was setup to better transfer the store's offline value online and ma
 ## Developer
 
 **Vasco Azevedo**  
-Informatics Engineering Student  
+Software Engineering Student  
 Instituto Superior de Engenharia do Porto (ISEP)
 
 ---
