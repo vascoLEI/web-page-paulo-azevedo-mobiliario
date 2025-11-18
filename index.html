@@ -50,30 +50,45 @@
   </section>
 
   <section id="produtos" class="galeria">
-    <h3>Alguns dos nossos produtos</h3>
-    <p class="galeria-subtitle">Visite a loja para ver muito mais opções.</p>
+  <h3>Alguns dos nossos produtos</h3>
+  <p class="galeria-subtitle">Visite a loja para ver muito mais opções.</p>
 
-    <div class="produtos-grid">
+  <div class="produtos-carousel">
+    <div class="produtos-track">
       <div class="produto">
-        <img src="images/espelho redondo2.jpg" alt="Espelho redondo decorativo" class="galeria-img"
-          onclick="abrirLightbox(this)">
+        <img src="images/espelho redondo2.jpg" alt="Espelho redondo" class="galeria-img">
         <p>Espelho redondo</p>
       </div>
+
       <div class="produto">
-        <img src="images/cama com detalhe dourado.jpg" alt="Cama com dourado" class="galeria-img"
-          onclick="abrirLightbox(this)">
+        <img src="images/cama com detalhe dourado.jpg" alt="Cama com dourado" class="galeria-img">
         <p>Cama com Dourado</p>
       </div>
+
       <div class="produto">
-        <img src="images/sofá branco.jpg" alt="Colchão ortopédico" class="galeria-img" onclick="abrirLightbox(this)">
+        <img src="images/sofá branco.jpg" alt="Sofá branco" class="galeria-img">
         <p>Sofá branco</p>
       </div>
-      <div class="galeria-cta">
-        <a href="products.html" class="btn-primary">Ver mais produtos</a>
+
+      <div class="produto">
+        <img src="images/sala de jantar.jpg" alt="Sala de jantar" class="galeria-img">
+        <p>Sala de jantar</p>
       </div>
-  </section>
+
+      <div class="produto">
+        <img src="images/sofa2.jpg" alt="Sofá 2 lugares" class="galeria-img">
+        <p>Sofá 2 lugares</p>
+      </div>
+
+      <div class="produto">
+        <img src="images/cama1.jpg" alt="Cama estofada" class="galeria-img">
+        <p>Cama estofada</p>
+      </div>
+    </div>
   </div>
-  </section>
+</section>
+
+
 
   <section id="contactos" class="contactos">
     <h3>Contactos</h3>
@@ -116,6 +131,8 @@
       document.getElementById('lightbox').style.display = 'none';
     }
   </script>
+
+  /*That script will make sure that the header will decrease */
   <script>
   const header = document.querySelector('header');
   const hero   = document.querySelector('.hero');
@@ -124,7 +141,6 @@
     const heroHeight = hero.offsetHeight;
     const scrollY = window.scrollY || window.pageYOffset;
 
-    // quando scroll > altura do hero - 80px, encolhe
     if (scrollY > heroHeight - 80) {
       header.classList.add('header-small');
     } else {
@@ -136,6 +152,61 @@
   window.addEventListener('load', updateHeaderOnScroll);
   window.addEventListener('resize', updateHeaderOnScroll);
 </script>
+
+/* This script will make the products slide */
+<script>
+  const carousel = document.querySelector('.produtos-carousel');
+  const track = document.querySelector('.produtos-track');
+  const slides = Array.from(track.children);
+
+  const visibleDesktop = 3;
+  let visible = 3;
+  let currentIndex = 0;
+  let slideStep = 0; // quantos píxeis avança por “salto”
+
+  function recalcSlider() {
+    const isMobile = window.innerWidth <= 768;
+    visible = isMobile ? 1 : visibleDesktop;
+
+    // largura de cada cartão + gap
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || 0);
+
+    const slideRect = slides[0].getBoundingClientRect();
+    slideStep = slideRect.width + gap;
+
+    // garantir que o índice está dentro dos limites após resize
+    if (currentIndex > slides.length - visible) {
+      currentIndex = Math.max(slides.length - visible, 0);
+    }
+
+    updateSlider();
+  }
+
+  function updateSlider() {
+    const offset = currentIndex * slideStep;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function nextSlide() {
+    if (slides.length <= visible) return; // nada para rodar
+
+    currentIndex++;
+    if (currentIndex > slides.length - visible) {
+      currentIndex = 0;
+    }
+    updateSlider();
+  }
+
+  window.addEventListener('load', () => {
+    recalcSlider();
+    setInterval(nextSlide, 4000); // muda de 4 em 4 segundos
+  });
+
+  window.addEventListener('resize', recalcSlider);
+</script>
+
+
 </body>
 
 </html>
