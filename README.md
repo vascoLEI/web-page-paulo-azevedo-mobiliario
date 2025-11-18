@@ -17,10 +17,10 @@ The task envisage this project was to develop a neat, clean and user-friendly on
 ## Project Structure
 
 - **index.html** — Homepage  
-- **Produtos.html** — Product gallery page  
-- **Sobre.html** — “About Us” page  
+- **products.html** — Product gallery page  
+- **about.html** — “About Us” page  
 - **style.css** — Global styling  
-- **imagens/** — Images used in the website  
+- **images/** — Images used in the website  
 
 ---
 
