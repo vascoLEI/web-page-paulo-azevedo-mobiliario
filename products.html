@@ -32,8 +32,8 @@
       <p>Alguns exemplos de mobiliário, estofos e colchões disponíveis na loja.</p>
 
     </div>
-      <div class="filtros-wrapper">
-        <div class="filtros">
+    <div class="filtros-wrapper">
+      <div class="filtros">
         <button class="filtro-btn active" data-filter="all">Todos</button>
         <button class="filtro-btn" data-filter="sala">Salas</button>
         <button class="filtro-btn" data-filter="quarto">Quartos</button>
@@ -110,51 +110,71 @@
     });
   </script>
 
-  <script src="listOfProducts.js">
-    /*Here will call the listOfProducts and make all the work of putting it on products page*/
-  </script>
-  <script>
-    function renderProdutos(lista) {
-      const grid = document.getElementById('produtos-grid');
-      if (!grid) return;
+  <script src="listOfProducts.js"></script>
+<script>
+  function renderProdutos(lista) {
+    const grid = document.getElementById('produtos-grid');
+    if (!grid) return;
 
-      grid.innerHTML = lista.map(p => `
-        <article class="produto-card" data-categoria="${p.categoria}">
-          <img src="${p.imagem}" alt="${p.nome}">
-          <h3>${p.nome}</h3>
-          <p>${p.descricao || ""}</p>
-        </article>
-      `).join('');
-    }
+    grid.innerHTML = lista.map(p => `
+      <article class="produto-card" data-categoria="${p.categoria}">
+        <img src="${p.imagem}" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.descricao || ""}</p>
+      </article>
+    `).join('');
+  }
 
-    function initFiltros() {
-      const filtroBtns = document.querySelectorAll(".filtro-btn");
+  function initFiltros() {
+    const filtroBtns = document.querySelectorAll(".filtro-btn");
 
-      filtroBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const filtro = btn.dataset.filter;
-          const produtos = document.querySelectorAll(".produto-card");
+    filtroBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filtro = btn.dataset.filter;
+        const produtos = document.querySelectorAll(".produto-card");
 
-          filtroBtns.forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
+        filtroBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-          produtos.forEach(prod => {
-            const categoria = prod.dataset.categoria;
-            if (filtro === "all" || categoria === filtro) {
-              prod.style.display = "block";
-            } else {
-              prod.style.display = "none";
-            }
-          });
+        produtos.forEach(prod => {
+          const categoria = prod.dataset.categoria;
+          if (filtro === "all" || categoria === filtro) {
+            prod.style.display = "block";
+          } else {
+            prod.style.display = "none";
+          }
         });
       });
-    }
-
-    window.addEventListener('load', () => {
-      renderProdutos(PRODUTOS);
-      initFiltros();
     });
-  </script>
+  }
+
+  function setupHeaderShrink() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('header-small');
+      } else {
+        header.classList.remove('header-small');
+      }
+    });
+  }
+
+  window.addEventListener('load', () => {
+    renderProdutos(PRODUTOS);
+    initFiltros();
+    setupHeaderShrink();
+  });
+</script>
+
+
+  <!--This will put the whatsapp button-->
+  <a href="https://wa.me/351915373158" class="whatsapp-float" target="_blank">
+    <img src="images/WhatsApp.png" alt="WhatsApp">
+  </a>
+
+
 </body>
 
 </html>

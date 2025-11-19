@@ -50,43 +50,43 @@
   </section>
 
   <section id="produtos" class="galeria">
-  <h3>Alguns dos nossos produtos</h3>
-  <p class="galeria-subtitle">Visite a loja para ver muito mais opções.</p>
+    <h3>Alguns dos nossos produtos</h3>
+    <p class="galeria-subtitle">Visite a loja para ver muito mais opções.</p>
 
-  <div class="produtos-carousel">
-    <div class="produtos-track">
-      <div class="produto">
-        <img src="images/espelho redondo2.jpg" alt="Espelho redondo" class="galeria-img">
-        <p>Espelho redondo</p>
-      </div>
+    <div class="produtos-carousel">
+      <div class="produtos-track">
+        <div class="produto">
+          <img src="images/espelho redondo2.jpg" alt="Espelho redondo" class="galeria-img">
+          <p>Espelho redondo</p>
+        </div>
 
-      <div class="produto">
-        <img src="images/sofá com arrumação.jpg" alt="Cama com dourado" class="galeria-img">
-        <p>Sofá com arrumação</p>
-      </div>
+        <div class="produto">
+          <img src="images/sofá com arrumação.jpg" alt="Cama com dourado" class="galeria-img">
+          <p>Sofá com arrumação</p>
+        </div>
 
-      <div class="produto">
-        <img src="images/sala Resultado.jpg" alt="Sala" class="galeria-img">
-        <p>Sofá cinza</p>
-      </div>
+        <div class="produto">
+          <img src="images/sala Resultado.jpg" alt="Sala" class="galeria-img">
+          <p>Sofá cinza</p>
+        </div>
 
-      <div class="produto">
-        <img src="images/sofa cama resultado.jpg" alt="Sofá cama" class="galeria-img">
-        <p>Sofá</p>
-      </div>
+        <div class="produto">
+          <img src="images/sofa cama resultado.jpg" alt="Sofá cama" class="galeria-img">
+          <p>Sofá</p>
+        </div>
 
-      <div class="produto">
-        <img src="images/sofa Resultado (2).jpg" alt="Sofá" class="galeria-img">
-        <p>Sofá</p>
-      </div>
+        <div class="produto">
+          <img src="images/sofa Resultado (2).jpg" alt="Sofá" class="galeria-img">
+          <p>Sofá</p>
+        </div>
 
-      <div class="produto">
-        <img src="images/sofa resultado (3).jpg" alt="Sofá" class="galeria-img">
-        <p>Sofá</p>
+        <div class="produto">
+          <img src="images/sofa resultado (3).jpg" alt="Sofá" class="galeria-img">
+          <p>Sofá</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
 
@@ -100,16 +100,12 @@
         <p><strong>Horário:</strong> Seg - Sáb: 10h - 19h</p>
       </div>
       <div class="contactos-mapa">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7866740195836!2d-8.762019025093878!3d41.378719296534555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24468f8eae7b3b%3A0x39d71751914f5325!2sPaulo%20Azevedo%20Mobili%C3%A1rio!5e0!3m2!1spt-PT!2spt!4v1763426293566!5m2!1spt-PT!2spt"
-        width="100%"
-        height="350"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7866740195836!2d-8.762019025093878!3d41.378719296534555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24468f8eae7b3b%3A0x39d71751914f5325!2sPaulo%20Azevedo%20Mobili%C3%A1rio!5e0!3m2!1spt-PT!2spt!4v1763426293566!5m2!1spt-PT!2spt"
+          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
   </section>
 
@@ -132,79 +128,84 @@
     }
   </script>
 
-<script>
+  <script>
     /*That script will make sure that the header will decrease */
-  const header = document.querySelector('header');
-  const hero   = document.querySelector('.hero');
+    const header = document.querySelector('header');
+    const hero = document.querySelector('.hero');
 
-  function updateHeaderOnScroll() {
-    const heroHeight = hero.offsetHeight;
-    const scrollY = window.scrollY || window.pageYOffset;
+    function updateHeaderOnScroll() {
+      const heroHeight = hero.offsetHeight;
+      const scrollY = window.scrollY || window.pageYOffset;
 
-    if (scrollY > heroHeight - 80) {
-      header.classList.add('header-small');
-    } else {
-      header.classList.remove('header-small');
-    }
-  }
-
-  window.addEventListener('scroll', updateHeaderOnScroll);
-  window.addEventListener('load', updateHeaderOnScroll);
-  window.addEventListener('resize', updateHeaderOnScroll);
-</script>
-
-<script>
-  /* This script will make the products slide */
-  const carousel = document.querySelector('.produtos-carousel');
-  const track = document.querySelector('.produtos-track');
-  const slides = Array.from(track.children);
-
-  const visibleDesktop = 3;
-  let visible = 3;
-  let currentIndex = 0;
-  let slideStep = 0; // quantos píxeis avança por “salto”
-
-  function recalcSlider() {
-    const isMobile = window.innerWidth <= 768;
-    visible = isMobile ? 1 : visibleDesktop;
-
-    // largura de cada cartão + gap
-    const styles = window.getComputedStyle(track);
-    const gap = parseFloat(styles.columnGap || styles.gap || 0);
-
-    const slideRect = slides[0].getBoundingClientRect();
-    slideStep = slideRect.width + gap;
-
-    // garantir que o índice está dentro dos limites após resize
-    if (currentIndex > slides.length - visible) {
-      currentIndex = Math.max(slides.length - visible, 0);
+      if (scrollY > heroHeight - 80) {
+        header.classList.add('header-small');
+      } else {
+        header.classList.remove('header-small');
+      }
     }
 
-    updateSlider();
-  }
+    window.addEventListener('scroll', updateHeaderOnScroll);
+    window.addEventListener('load', updateHeaderOnScroll);
+    window.addEventListener('resize', updateHeaderOnScroll);
+  </script>
 
-  function updateSlider() {
-    const offset = currentIndex * slideStep;
-    track.style.transform = `translateX(-${offset}px)`;
-  }
+  <script>
+    /* This script will make the products slide */
+    const carousel = document.querySelector('.produtos-carousel');
+    const track = document.querySelector('.produtos-track');
+    const slides = Array.from(track.children);
 
-  function nextSlide() {
-    if (slides.length <= visible) return; // nada para rodar
+    const visibleDesktop = 3;
+    let visible = 3;
+    let currentIndex = 0;
+    let slideStep = 0;
 
-    currentIndex++;
-    if (currentIndex > slides.length - visible) {
-      currentIndex = 0;
+    function recalcSlider() {
+      const isMobile = window.innerWidth <= 768;
+      visible = isMobile ? 1 : visibleDesktop;
+
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || 0);
+
+      const slideRect = slides[0].getBoundingClientRect();
+      slideStep = slideRect.width + gap;
+
+      if (currentIndex > slides.length - visible) {
+        currentIndex = Math.max(slides.length - visible, 0);
+      }
+
+      updateSlider();
     }
-    updateSlider();
-  }
 
-  window.addEventListener('load', () => {
-    recalcSlider();
-    setInterval(nextSlide, 4000); // muda de 4 em 4 segundos
-  });
+    function updateSlider() {
+      const offset = currentIndex * slideStep;
+      track.style.transform = `translateX(-${offset}px)`;
+    }
 
-  window.addEventListener('resize', recalcSlider);
-</script>
+    function nextSlide() {
+      if (slides.length <= visible) return;
+
+      currentIndex++;
+      if (currentIndex > slides.length - visible) {
+        currentIndex = 0;
+      }
+      updateSlider();
+    }
+
+    window.addEventListener('load', () => {
+      recalcSlider();
+      setInterval(nextSlide, 4000); // muda de 4 em 4 segundos
+    });
+
+    window.addEventListener('resize', recalcSlider);
+  </script>
+
+  <!--This will put the whatsapp button-->
+  <a href="https://wa.me/351915373158" class="whatsapp-float" target="_blank">
+  <img src="images/WhatsApp.png" alt="WhatsApp">
+</a>
+
+
 
 
 </body>
