@@ -394,12 +394,28 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+.filtros-wrapper {
+  position: sticky;
+  top: 60px;
+  z-index: 900;
+  background: #f5f5f5;
+  padding: 0.75rem 0 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
 .filtros {
-  margin-top: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .filtros-wrapper {
+    top: 70px;
+  }
 }
 
 .filtro-btn {

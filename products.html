@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logoicon.png">
 </head>
+
 <body>
   <header>
     <nav class="navbar">
@@ -29,25 +31,88 @@
       <h2>Os nossos produtos</h2>
       <p>Alguns exemplos de mobiliário, estofos e colchões disponíveis na loja.</p>
 
-      <div class="filtros">
+    </div>
+      <div class="filtros-wrapper">
+        <div class="filtros">
         <button class="filtro-btn active" data-filter="all">Todos</button>
         <button class="filtro-btn" data-filter="sala">Salas</button>
         <button class="filtro-btn" data-filter="quarto">Quartos</button>
+        <button class="filtro-btn" data-filter="colchao">Colchões</button>
         <button class="filtro-btn" data-filter="decoracao">Decoração</button>
         <button class="filtro-btn" data-filter="aparador">Aparadores</button>
       </div>
     </div>
 
     <div class="produtos-grid-page" id="produtos-grid"></div>
-    
+
   </section>
 
   <footer>
     <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
   </footer>
 
-  /*Here will call the listOfProducts and make all the work of putting it on products page */
   <script src="listOfProducts.js"></script>
+  <script>
+    function renderProdutos(lista) {
+      const grid = document.getElementById('produtos-grid');
+      if (!grid) return;
+
+      grid.innerHTML = lista.map(p => `
+      <article class="produto-card" data-categoria="${p.categoria}">
+        <img src="${p.imagem}" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.descricao || ""}</p>
+      </article>
+    `).join('');
+    }
+
+    function initFiltros() {
+      const filtroBtns = document.querySelectorAll(".filtro-btn");
+
+      filtroBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const filtro = btn.dataset.filter;
+          const produtos = document.querySelectorAll(".produto-card");
+
+          filtroBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          produtos.forEach(prod => {
+            const categoria = prod.dataset.categoria;
+            if (filtro === "all" || categoria === filtro) {
+              prod.style.display = "block";
+            } else {
+              prod.style.display = "none";
+            }
+          });
+        });
+      });
+    }
+
+
+    function setupHeaderShrink() {
+      const header = document.querySelector('header');
+      if (!header) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('header-small');
+        } else {
+          header.classList.remove('header-small');
+        }
+      });
+    }
+
+    window.addEventListener('load', () => {
+      renderProdutos(PRODUTOS);
+      initFiltros();
+      setupHeaderShrink();
+    });
+  </script>
+
+  <script src="listOfProducts.js">
+    /*Here will call the listOfProducts and make all the work of putting it on products page*/
+  </script>
   <script>
     function renderProdutos(lista) {
       const grid = document.getElementById('produtos-grid');
@@ -91,4 +156,5 @@
     });
   </script>
 </body>
+
 </html>
