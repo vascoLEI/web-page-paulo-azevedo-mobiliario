@@ -17,6 +17,9 @@
           <img src="images/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img">
         </a>
       </h1>
+      <button class="nav-toggle" aria-label="Abrir menu">
+        ☰
+      </button>
 
       <ul class="nav-links">
         <li><a href="products.html">Produtos</a></li>
@@ -25,6 +28,7 @@
       </ul>
     </nav>
   </header>
+
 
   <section class="produtos-page">
     <div class="produtos-header">
@@ -111,69 +115,79 @@
   </script>
 
   <script src="listOfProducts.js"></script>
-<script>
-  function renderProdutos(lista) {
-    const grid = document.getElementById('produtos-grid');
-    if (!grid) return;
+  <script>
+    function renderProdutos(lista) {
+      const grid = document.getElementById('produtos-grid');
+      if (!grid) return;
 
-    grid.innerHTML = lista.map(p => `
+      grid.innerHTML = lista.map(p => `
       <article class="produto-card" data-categoria="${p.categoria}">
         <img src="${p.imagem}" alt="${p.nome}">
         <h3>${p.nome}</h3>
         <p>${p.descricao || ""}</p>
       </article>
     `).join('');
-  }
+    }
 
-  function initFiltros() {
-    const filtroBtns = document.querySelectorAll(".filtro-btn");
+    function initFiltros() {
+      const filtroBtns = document.querySelectorAll(".filtro-btn");
 
-    filtroBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const filtro = btn.dataset.filter;
-        const produtos = document.querySelectorAll(".produto-card");
+      filtroBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const filtro = btn.dataset.filter;
+          const produtos = document.querySelectorAll(".produto-card");
 
-        filtroBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+          filtroBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
 
-        produtos.forEach(prod => {
-          const categoria = prod.dataset.categoria;
-          if (filtro === "all" || categoria === filtro) {
-            prod.style.display = "block";
-          } else {
-            prod.style.display = "none";
-          }
+          produtos.forEach(prod => {
+            const categoria = prod.dataset.categoria;
+            if (filtro === "all" || categoria === filtro) {
+              prod.style.display = "block";
+            } else {
+              prod.style.display = "none";
+            }
+          });
         });
       });
+    }
+
+    function setupHeaderShrink() {
+      const header = document.querySelector('header');
+      if (!header) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('header-small');
+        } else {
+          header.classList.remove('header-small');
+        }
+      });
+    }
+
+    window.addEventListener('load', () => {
+      renderProdutos(PRODUTOS);
+      initFiltros();
+      setupHeaderShrink();
     });
-  }
 
-  function setupHeaderShrink() {
-    const header = document.querySelector('header');
-    if (!header) return;
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('header-small');
-      } else {
-        header.classList.remove('header-small');
-      }
+    function setupMobileMenu() {
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (!toggle || !navLinks) return;
+
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+
+      });
+    }
+    window.addEventListener('load', () => {
+      setupMobileMenu();
     });
-  }
-
-  window.addEventListener('load', () => {
-    renderProdutos(PRODUTOS);
-    initFiltros();
-    setupHeaderShrink();
-  });
-</script>
 
 
-  <!--This will put the whatsapp button-->
-  <a href="https://wa.me/351915373158" class="whatsapp-float" target="_blank">
-    <img src="images/WhatsApp.png" alt="WhatsApp">
-  </a>
-
+  </script>
 
 </body>
 
