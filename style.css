@@ -751,9 +751,13 @@ footer {
     grid-template-columns: 1fr;
   }
 
+@media (max-width: 768px) {
   .hero {
-    height: 60vh;
+    height: 70vh;
+    background-attachment: scroll; 
+    background-position: center 40%;
   }
+}
 }
 
 .reveal {
