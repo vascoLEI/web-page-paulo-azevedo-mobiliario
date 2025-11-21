@@ -1,9 +1,13 @@
+/* ===========================
+   Root variables & global reset
+   =========================== */
 :root {
   --main-color: #8b4513d7;
   --secondary-color: #f5f5f5;
   --dark: #333;
 }
 
+/* Reset margins, paddings and default font */
 * {
   margin: 0;
   padding: 0;
@@ -11,28 +15,27 @@
   font-family: Arial, sans-serif;
 }
 
+/* Add top padding so content is not hidden behind fixed header */
 body {
   background-color: #fff;
   color: #333;
   padding-top: 80px;
 }
 
-header.header-small {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  background: #f8f8f8;
+/* When lightbox is open, lock scroll and hide header */
+body.lightbox-open {
+  overflow: hidden;
 }
 
-header.header-small .navbar {
-  padding: 0.4rem 2rem;
+body.lightbox-open header {
+  display: none;
 }
 
-header.header-small .logo-img {
-  height: 40px;
-}
+/* ===========================
+   Header & navigation
+   =========================== */
 
-
-/* HEADER */
-
+/* Default header style */
 header {
   background: #f2f2f2;
   color: #000;
@@ -45,6 +48,13 @@ header {
   transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
+/* Smaller header style when scrolling */
+header.header-small {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  background: #f8f8f8;
+}
+
+/* Inner navbar container */
 .navbar {
   max-width: 1100px;
   margin: 0 auto;
@@ -55,6 +65,7 @@ header {
   transition: padding 0.3s ease;
 }
 
+/* Logo image size and smooth resizing */
 .logo-img {
   height: 60px;
   width: auto;
@@ -62,33 +73,24 @@ header {
   transition: height 0.3s ease;
 }
 
-
-.hero-overlay {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.85));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
+/* Logo container */
 .logo {
   margin: 0;
 }
 
+/* Make logo clickable area consistent */
 .logo a {
   display: inline-block;
 }
 
+/* Navigation links container */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
 
+/* Navigation links style */
 .nav-links a {
   color: #000;
   text-decoration: none;
@@ -96,6 +98,7 @@ header {
   position: relative;
 }
 
+/* Underline animation on nav links */
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -111,8 +114,21 @@ header {
   width: 100%;
 }
 
-/* HERO */
+/* Smaller header padding when class is applied */
+header.header-small .navbar {
+  padding: 0.4rem 2rem;
+}
 
+/* Smaller logo when header is shrunk */
+header.header-small .logo-img {
+  height: 40px;
+}
+
+/* ===========================
+   Hero section (home page)
+   =========================== */
+
+/* Hero background image and main container */
 .hero {
   background-image: url("images/frente-com-luzes.jpg");
   background-repeat: no-repeat;
@@ -123,7 +139,7 @@ header {
   position: relative;
 }
 
-
+/* Dark overlay on top of hero image */
 .hero-overlay {
   width: 100%;
   height: 100%;
@@ -133,6 +149,7 @@ header {
   align-items: center;
 }
 
+/* Centered content in hero */
 .hero-content {
   text-align: center;
   color: white;
@@ -140,16 +157,19 @@ header {
   border-radius: 1rem;
 }
 
+/* Hero title */
 .hero-content h2 {
   font-size: 2.3rem;
   margin-bottom: 1rem;
 }
 
+/* Hero subtitle */
 .hero-content p {
   font-size: 1.1rem;
   margin-bottom: 1.2rem;
 }
 
+/* Generic primary button animation*/
 .btn-primary {
   position: relative;
   overflow: hidden;
@@ -169,64 +189,80 @@ header {
   transform: scaleX(1);
 }
 
+/* ===========================
+   "Sobre" section (home simple about)
+   =========================== */
 
-/* about us */
-
+/* Wrapper for simple about section on home */
 .sobre {
   padding: 3rem 2rem;
 }
 
+/* Inner container for about text on home */
 .sobre-inner {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
 
+/* About heading */
 .sobre h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
+/* About paragraph */
 .sobre p {
   line-height: 1.6;
 }
 
-/* photos of products */
+/* ===========================
+   Gallery / product highlight on home
+   =========================== */
 
+/* Section wrapping the gallery on the home page */
 .galeria {
   padding: 3rem 2rem;
   text-align: center;
   background: var(--secondary-color);
 }
 
+/* Title for gallery */
 .galeria h3 {
   font-size: 2rem;
 }
 
+/* Subtitle under gallery title */
 .galeria-subtitle {
   margin-top: 0.5rem;
   color: #666;
 }
 
-/* Showing products on main menu */
+/* ===========================
+   Products carousel on home
+   =========================== */
 
+/* Outer container of the carousel */
 .produtos-carousel {
   max-width: 1100px;
   margin: 2rem auto 0 auto;
   overflow: hidden;
 }
 
+/* Flex container with all slides */
 .produtos-track {
   display: flex;
   gap: 2rem;
   transition: transform 0.5s ease;
 }
 
+/* Single product card in carousel */
 .produto {
   flex: 0 0 calc(100% / 3);
   text-align: center;
 }
 
+/* Product image in carousel */
 .produto img {
   width: 100%;
   border-radius: 0.5rem;
@@ -234,14 +270,13 @@ header {
   height: 320px;
 }
 
+/* Product name under image */
 .produto p {
   margin-top: 0.5rem;
   font-weight: bold;
 }
 
-
-/* Buttons on main menu showing products */
-
+/* Carousel navigation buttons*/
 .carousel-btn {
   border: none;
   background: rgba(0, 0, 0, 0.05);
@@ -262,37 +297,15 @@ header {
   transform: translateY(-1px);
 }
 
-/* For mobile */
+/* ===========================
+   Global lightbox for images
+   =========================== */
 
-@media (max-width: 768px) {
-  .produto {
-    flex: 0 0 100%;
-  }
-
-  .produto img {
-    height: 260px;
-  }
-}
-
-
-.produto img {
-  width: 100%;
-  border-radius: 0.5rem;
-  object-fit: cover;
-  height: 400px;
-}
-
-.produto p {
-  margin-top: 0.5rem;
-  font-weight: bold;
-}
-
-/* Lightbox */
-
+/* Fullscreen dark overlay for enlarged images */
 .lightbox {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 2000;
   top: 0;
   left: 0;
   width: 100vw;
@@ -302,6 +315,7 @@ header {
   align-items: center;
 }
 
+/* Enlarged image inside lightbox */
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
@@ -310,10 +324,12 @@ header {
   transition: transform 0.3s ease;
 }
 
+/* Slight zoom on hover to make it feel interactive */
 .lightbox img:hover {
   transform: scale(1.03);
 }
 
+/* Gallery images that can open the lightbox */
 .galeria-img {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -324,18 +340,23 @@ header {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* contacts */
+/* ===========================
+   Contacts section (generic)
+   =========================== */
 
+/* Wrapper for contacts sections */
 .contactos {
   padding: 3rem 2rem;
 }
 
+/* Main title in contacts page */
 .contactos h3 {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 2rem;
 }
 
+/* Grid layout for contacts*/
 .contactos-grid {
   max-width: 900px;
   margin: 0 auto;
@@ -344,10 +365,12 @@ header {
   gap: 2rem;
 }
 
+/* Contacts text info block */
 .contactos-info p {
   margin-bottom: 0.5rem;
 }
 
+/* Links inside contacts info */
 .contactos-info a {
   color: var(--main-color);
   text-decoration: none;
@@ -357,6 +380,7 @@ header {
   text-decoration: underline;
 }
 
+/* Map link/button styling */
 .contactos-mapa a {
   display: inline-block;
   margin-top: 1rem;
@@ -373,7 +397,7 @@ header {
   color: #fff;
 }
 
-/* social media on contacts */
+/* Social media vertical list on contacts page */
 .contactos-socials {
   display: flex;
   flex-direction: column;
@@ -381,6 +405,7 @@ header {
   margin-top: 0.4rem;
 }
 
+/* Single social media row */
 .contact-social-link {
   display: flex;
   align-items: center;
@@ -390,6 +415,7 @@ header {
   font-weight: 500;
 }
 
+/* Container for social icon */
 .contact-social-icon img {
   width: 28px;
   height: 28px;
@@ -397,11 +423,12 @@ header {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Hover effect for social links */
 .contact-social-link:hover {
   text-decoration: underline;
 }
 
-/* page contacts whatssap questions */
+/* Highlight box on contacts page */
 .contact-highlight {
   max-width: 1100px;
   margin: 2.5rem auto 0 auto;
@@ -414,32 +441,29 @@ header {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
+/* Icon inside the highlight box */
 .contact-highlight-icon img {
   width: 52px;
   height: 52px;
 }
 
+/* Title line in highlight box */
 .contact-highlight-title {
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
 
+/* Text inside highlight box */
 .contact-highlight-text p {
   margin: 0;
   line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .contact-highlight {
-    padding: 1.2rem 1rem;
-    margin-top: 2rem;
-  }
-}
+/* ===========================
+   Footer
+   =========================== */
 
-
-
-
-/* FOOTER */
+/* Main footer bar at very bottom */
 footer {
   background: #3a342f;
   color: white;
@@ -448,7 +472,7 @@ footer {
   font-size: 0.85rem;
 }
 
-
+/* Extended footer contact area above main footer */
 .footer-contact {
   background: #494242;
   color: #fff;
@@ -456,6 +480,7 @@ footer {
   margin-top: 3rem;
 }
 
+/* Inner grid for extended footer */
 .footer-contact-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -464,6 +489,7 @@ footer {
   gap: 2.5rem;
 }
 
+/* Column inside footer contact */
 .footer-col h4 {
   font-size: 1.1rem;
   letter-spacing: 0.08em;
@@ -471,11 +497,13 @@ footer {
   margin-bottom: 1rem;
 }
 
+/* Footer text paragraphs */
 .footer-col p {
   margin-bottom: 0.6rem;
   line-height: 1.5;
 }
 
+/* Footer links */
 .footer-col a {
   color: #fff;
   text-decoration: none;
@@ -485,18 +513,20 @@ footer {
   text-decoration: underline;
 }
 
+/* Small note under phone number */
 .contact-note {
   font-size: 0.8rem;
   opacity: 0.8;
 }
 
-/* socials icons */
+/* Row of social icons in footer */
 .footer-socials {
   display: flex;
   gap: 0.8rem;
   align-items: center;
 }
 
+/* Social icons size and hover animation */
 .footer-socials img {
   width: 28px;
   height: 28px;
@@ -509,32 +539,30 @@ footer {
   opacity: 0.85;
 }
 
-/* responsivo */
-@media (max-width: 768px) {
-  .footer-contact {
-    padding: 2.5rem 1.5rem 2rem;
-  }
-}
+/* ===========================
+   Products page layout
+   =========================== */
 
-
-/* page for products */
-
+/* Wrapper for products page content */
 .produtos-page {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
 }
 
+/* Header text on products page */
 .produtos-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
+/* Products page title */
 .produtos-header h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
+/* Sticky filter bar wrapper */
 .filtros-wrapper {
   position: sticky;
   top: 60px;
@@ -544,6 +572,7 @@ footer {
   border-bottom: 1px solid #e0e0e0;
 }
 
+/* Inner filter buttons container */
 .filtros {
   max-width: 1100px;
   margin: 0 auto;
@@ -553,12 +582,7 @@ footer {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .filtros-wrapper {
-    top: 70px;
-  }
-}
-
+/* Filter button style */
 .filtro-btn {
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -569,17 +593,20 @@ footer {
   transition: background 0.2s, color 0.2s, transform 0.1s;
 }
 
+/* Hover feedback on filter buttons */
 .filtro-btn:hover {
   background: var(--main-color);
   color: #fff;
   transform: translateY(-1px);
 }
 
+/* Active filter button */
 .filtro-btn.active {
   background: var(--main-color);
   color: #fff;
 }
 
+/* Grid of product cards on products page */
 .produtos-grid-page {
   margin-top: 2rem;
   display: grid;
@@ -587,6 +614,7 @@ footer {
   gap: 1.5rem;
 }
 
+/* Single product card styling */
 .produto-card {
   background: #fff;
   border-radius: 0.8rem;
@@ -594,38 +622,47 @@ footer {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover effect on product cards */
 .produto-card:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Product image in card */
 .produto-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
 
+/* Product name in card */
 .produto-card h3 {
   font-size: 1.1rem;
   margin: 0.8rem 1rem 0.3rem 1rem;
 }
 
+/* Product description in card */
 .produto-card p {
   font-size: 0.9rem;
   margin: 0 1rem 1rem 1rem;
   color: #555;
 }
 
-/* page for about us */
+/* ===========================
+   About page layout
+   =========================== */
 
+/* Wrapper for about page main content */
 .sobre-page {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
 }
 
+/* Two-column layout */
 .sobre-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
@@ -634,6 +671,7 @@ footer {
   margin-bottom: 3rem;
 }
 
+/* About page image styling */
 .sobre-imagem img {
   width: 100%;
   border-radius: 0.8rem;
@@ -641,30 +679,34 @@ footer {
   max-height: 420px;
 }
 
+/* About page text block */
 .sobre-texto h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
+/* Paragraphs on about page */
 .sobre-texto p {
   line-height: 1.6;
   margin-bottom: 0.8rem;
 }
 
+/* Call to action area under gallery */
 .galeria-cta {
   margin-top: 2rem;
   text-align: center;
 }
 
+/* Button appearance inside gallery call to action */
 .galeria-cta .btn-primary {
   display: inline-block;
 }
 
-/* Page for contacts */
-.contactos {
-  padding: 3rem 2rem;
-}
+/* ===========================
+   Contacts page layout
+   =========================== */
 
+/* Contacts wrapper specific for contacts page with bigger grid */
 .contactos-grid {
   max-width: 1100px;
   margin: 0 auto;
@@ -674,6 +716,7 @@ footer {
   align-items: start;
 }
 
+/* Embedded Google Maps iframe styling */
 .contactos-mapa iframe {
   width: 100%;
   height: 350px;
@@ -682,11 +725,13 @@ footer {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
+/* Contacts page text style */
 .contactos-info {
   font-size: 0.95rem;
   color: #444;
 }
 
+/* Small label above each contact field */
 .contactos-label {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -695,11 +740,13 @@ footer {
   margin-bottom: 0.2rem;
 }
 
+/* Main value for contact fields */
 .contactos-valor {
   margin-bottom: 1.2rem;
   line-height: 1.5;
 }
 
+/* Links inside contact value block */
 .contactos-valor a {
   color: #333;
   text-decoration: none;
@@ -710,54 +757,17 @@ footer {
   text-decoration: underline;
 }
 
+/* Note under phone number */
 .contactos-nota {
   font-size: 0.8rem;
   color: #888;
 }
 
-@media (max-width: 768px) {
-  .contactos-grid {
-    grid-template-columns: 1fr;
-  }
+/* ===========================
+   Reveal animation
+   =========================== */
 
-  .contactos {
-    padding: 2.5rem 1.5rem;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .sobre-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sobre-page {
-    padding: 2rem 1.2rem;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contactos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      height: 70vh;
-      background-attachment: scroll;
-      background-position: center 40%;
-    }
-  }
-}
-
+/* Classes to animate elements on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -769,6 +779,11 @@ footer {
   transform: translateY(0);
 }
 
+/* ===========================
+   Mobile navigation toggle button
+   =========================== */
+
+/* Mobile menu toggle */
 .nav-toggle {
   display: none;
   background: none;
@@ -777,16 +792,69 @@ footer {
   cursor: pointer;
 }
 
-/* Mobile */
+/* ===========================
+   Responsive adjustments
+   =========================== */
+
+/* Global mobile breakpoint */
 @media (max-width: 768px) {
+  /* Stack logo and links more naturally */
   .navbar {
     flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
   }
 
+  /* Adjust hero height and background behavior on small screens */
+  .hero {
+    height: 70vh;
+    background-attachment: scroll;
+    background-position: center 40%;
+  }
+
+  /* Products in home carousel occupy full width on mobile */
+  .produto {
+    flex: 0 0 100%;
+  }
+
+  .produto img {
+    height: 260px;
+  }
+
+  /* About page layout becomes single column on mobile */
+  .sobre-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-page {
+    padding: 2rem 1.2rem;
+  }
+
+  /* Contacts grid becomes single column on mobile */
+  .contactos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactos {
+    padding: 2.5rem 1.5rem;
+  }
+
+  /* Footer contact padding reduced on mobile */
+  .footer-contact {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  /* Sticky filters slightly lower for mobile because of header height */
+  .filtros-wrapper {
+    top: 70px;
+  }
+
+  /* Show mobile nav toggle button */
   .nav-toggle {
     display: block;
   }
 
+  /* Hide nav links by default on mobile */
   .nav-links {
     width: 100%;
     justify-content: center;
@@ -795,29 +863,14 @@ footer {
     display: none;
   }
 
+  /* Show nav links when .open is toggled by JS */
   .nav-links.open {
     display: flex;
   }
 
- .lightbox {
-  display: none;
-  position: fixed;
-  z-index: 2000;  
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-}
-
-body.lightbox-open {
-  overflow: hidden;
-}
-
-body.lightbox-open header {
-  display: none;
-}
-
+  /* Contact highlight box spacing on mobile */
+  .contact-highlight {
+    padding: 1.2rem 1rem;
+    margin-top: 2rem;
+  }
 }

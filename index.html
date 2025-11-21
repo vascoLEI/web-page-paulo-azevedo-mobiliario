@@ -35,7 +35,6 @@
         <h2>Mobiliário • Estofos • Colchões</h2>
         <p>Soluções por medida na Póvoa de Varzim</p>
       </div>
-
     </div>
   </section>
 
@@ -46,38 +45,37 @@
     <div class="produtos-carousel">
       <div class="produtos-track">
         <div class="produto">
-          <img src="images/espelho redondo2.jpg" alt="Espelho redondo" class="galeria-img">
+          <img src="images/espelho redondo2.jpg" alt="Espelho redondo" class="galeria-img" onclick="openLightbox(this)">
           <p>Espelho redondo</p>
         </div>
 
         <div class="produto">
-          <img src="images/sofá com arrumação.jpg" alt="Cama com dourado" class="galeria-img">
+          <img src="images/sofá com arrumação.jpg" alt="Sofá com arrumação" class="galeria-img" onclick="openLightbox(this)">
           <p>Sofá com arrumação</p>
         </div>
 
         <div class="produto">
-          <img src="images/sala Resultado.jpg" alt="Sala" class="galeria-img">
+          <img src="images/sala Resultado.jpg" alt="Sala" class="galeria-img" onclick="openLightbox(this)">
           <p>Sofá cinza</p>
         </div>
 
         <div class="produto">
-          <img src="images/sofa cama resultado.jpg" alt="Sofá cama" class="galeria-img">
+          <img src="images/sofa cama resultado.jpg" alt="Sofá cama" class="galeria-img" onclick="openLightbox(this)">
           <p>Sofá</p>
         </div>
 
         <div class="produto">
-          <img src="images/sofa Resultado (2).jpg" alt="Sofá" class="galeria-img">
+          <img src="images/sofa Resultado (2).jpg" alt="Sofá" class="galeria-img" onclick="openLightbox(this)">
           <p>Sofá</p>
         </div>
 
         <div class="produto">
-          <img src="images/sofa resultado (3).jpg" alt="Sofá" class="galeria-img">
+          <img src="images/sofa resultado (3).jpg" alt="Sofá" class="galeria-img" onclick="openLightbox(this)">
           <p>Sofá</p>
         </div>
       </div>
     </div>
   </section>
-
 
   <section class="footer-contact">
     <div class="footer-contact-inner">
@@ -114,26 +112,33 @@
     <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
   </footer>
 
-  <div id="lightbox" class="lightbox" onclick="fecharLightbox()">
+  <!-- Handles opening and closing the image lightbox on the home page -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <img id="lightbox-img" src="" alt="Imagem ampliada do produto">
   </div>
 
   <script>
-    function abrirLightbox(img) {
+    // This function opens the lightbox with the clicked image
+    function openLightbox(img) {
       document.getElementById('lightbox-img').src = img.src;
       document.getElementById('lightbox').style.display = 'flex';
+      document.body.classList.add('lightbox-open');
     }
 
-    function fecharLightbox() {
+    // This function closes the lightbox
+    function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox-img').src = '';
+      document.body.classList.remove('lightbox-open');
     }
   </script>
 
+  <!-- Shrinks the header after scrolling past the hero section -->
   <script>
-    /*That script will make sure that the header will decrease */
     const header = document.querySelector('header');
     const hero = document.querySelector('.hero');
 
+    // Updates header style based on scroll position relative to hero height
     function updateHeaderOnScroll() {
       const heroHeight = hero.offsetHeight;
       const scrollY = window.scrollY || window.pageYOffset;
@@ -150,8 +155,8 @@
     window.addEventListener('resize', updateHeaderOnScroll);
   </script>
 
+  <!-- Creates automatic sliding carousel for the products on the home page -->
   <script>
-    /* This script will make the products slide */
     const carousel = document.querySelector('.produtos-carousel');
     const track = document.querySelector('.produtos-track');
     const slides = Array.from(track.children);
@@ -161,7 +166,8 @@
     let currentIndex = 0;
     let slideStep = 0;
 
-    function recalcSlider() {
+    // Calculates slide widths and how many are visible depending on screen size
+    function recalculateSlider() {
       const isMobile = window.innerWidth <= 768;
       visible = isMobile ? 1 : visibleDesktop;
 
@@ -175,31 +181,36 @@
         currentIndex = Math.max(slides.length - visible, 0);
       }
 
-      updateSlider();
+      updateSliderPosition();
     }
 
-    function updateSlider() {
+    // Applies the translateX transform based on the current index
+    function updateSliderPosition() {
       const offset = currentIndex * slideStep;
       track.style.transform = `translateX(-${offset}px)`;
     }
 
-    function nextSlide() {
+    // Moves to the next visible slide, looping back to start when reaching the end
+    function goToNextSlide() {
       if (slides.length <= visible) return;
 
       currentIndex++;
       if (currentIndex > slides.length - visible) {
         currentIndex = 0;
       }
-      updateSlider();
+      updateSliderPosition();
     }
 
     window.addEventListener('load', () => {
-      recalcSlider();
-      setInterval(nextSlide, 3500); //timer for passing products on main menu
+      recalculateSlider();
+      setInterval(goToNextSlide, 3500); // Time interval for auto-sliding products
     });
 
-    window.addEventListener('resize', recalcSlider);
+    window.addEventListener('resize', recalculateSlider);
+  </script>
 
+  <!-- Toggles the mobile navigation menu-->
+  <script>
     function setupMobileMenu() {
       const toggle = document.querySelector('.nav-toggle');
       const navLinks = document.querySelector('.nav-links');
@@ -213,10 +224,7 @@
     window.addEventListener('load', () => {
       setupMobileMenu();
     });
-
   </script>
-
-
 
 </body>
 

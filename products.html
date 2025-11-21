@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paulo Azevedo Mobiliário</title>
+  <title>Produtos | Paulo Azevedo Mobiliário</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logoicon.png">
 </head>
@@ -55,18 +55,22 @@
     <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
   </footer>
 
+  <!-- Lightbox container for enlarged product images -->
   <div class="lightbox" id="lightbox-produto">
     <img src="" alt="Produto ampliado">
   </div>
 
+  <!-- Provides the product list -->
   <script src="listOfProducts.js"></script>
 
+  <!-- Renders the products into the grid using the PRODUCTS array -->
   <script>
-    function renderProdutos(lista) {
+    // Renders the products into the grid based on the given list
+    function renderProducts(list) {
       const grid = document.getElementById('produtos-grid');
       if (!grid) return;
 
-      grid.innerHTML = lista.map(p => `
+      grid.innerHTML = list.map(p => `
         <article class="produto-card" data-categoria="${p.categoria}">
           <img src="${p.imagem}" alt="${p.nome}">
           <h3>${p.nome}</h3>
@@ -74,21 +78,25 @@
         </article>
       `).join('');
     }
+  </script>
 
-    function initFiltros() {
-      const filtroBtns = document.querySelectorAll(".filtro-btn");
+  <!-- Sets up the filter buttons to show/hide products by category -->
+  <script>
+    // Initializes the category filter buttons
+    function initFilters() {
+      const filterButtons = document.querySelectorAll(".filtro-btn");
 
-      filtroBtns.forEach(btn => {
+      filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-          const filtro = btn.dataset.filter;
-          const produtos = document.querySelectorAll(".produto-card");
+          const filter = btn.dataset.filter;
+          const products = document.querySelectorAll(".produto-card");
 
-          filtroBtns.forEach(b => b.classList.remove("active"));
+          filterButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
 
-          produtos.forEach(prod => {
-            const categoria = prod.dataset.categoria;
-            if (filtro === "all" || categoria === filtro) {
+          products.forEach(prod => {
+            const category = prod.dataset.categoria;
+            if (filter === "all" || category === filter) {
               prod.style.display = "block";
             } else {
               prod.style.display = "none";
@@ -97,7 +105,11 @@
         });
       });
     }
+  </script>
 
+  <!-- Shrinks the header slightly when the user scrolls down -->
+  <script>
+    // Adds or removes the 'header-small' class depending on scroll position
     function setupHeaderShrink() {
       const header = document.querySelector('header');
       if (!header) return;
@@ -110,8 +122,11 @@
         }
       });
     }
+  </script>
 
-
+  <!-- Toggles the mobile navigation menu -->
+  <script>
+    // Sets up click listener to open/close the mobile nav links
     function setupMobileMenu() {
       const toggle = document.querySelector('.nav-toggle');
       const navLinks = document.querySelector('.nav-links');
@@ -121,55 +136,64 @@
         navLinks.classList.toggle('open');
       });
     }
+  </script>
 
-
-    function initLightboxProdutos() {
+  <!-- Handles the product image lightbox for this page -->
+  <script>
+    // Initializes the lightbox behaviour for product images
+    function initProductLightbox() {
       const lightbox = document.getElementById('lightbox-produto');
       if (!lightbox) return;
 
       const lightboxImg = lightbox.querySelector('img');
 
-      function ligarListeners() {
-        const produtoImgs = document.querySelectorAll('.produto-card img');
+      // Attach click listeners to each product image
+      function attachImageListeners() {
+        const productImages = document.querySelectorAll('.produto-card img');
 
-        produtoImgs.forEach(img => {
+        productImages.forEach(img => {
           img.addEventListener('click', () => {
             lightboxImg.src = img.src;
             lightbox.style.display = 'flex';
-            document.body.classList.add('lightbox-open'); 
+            document.body.classList.add('lightbox-open');
           });
         });
       }
 
-      function fecharLightbox() {
+      // Closes the lightbox and resets image
+      function closeProductLightbox() {
         lightbox.style.display = 'none';
         lightboxImg.src = '';
         document.body.classList.remove('lightbox-open');
       }
 
+      // Close when clicking outside the image
       lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
-          fecharLightbox();
+          closeProductLightbox();
         }
       });
 
+      // Close on Escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          fecharLightbox();
+          closeProductLightbox();
         }
       });
 
-      ligarListeners();
+      attachImageListeners();
     }
 
+    // Initialize all behaviours after the page is loaded
     window.addEventListener('load', () => {
-      renderProdutos(PRODUTOS);  
-      initFiltros();             
-      setupHeaderShrink();       
-      setupMobileMenu();         
-      initLightboxProdutos();    
+      renderProducts(PRODUCTS);
+      initFilters();
+      setupHeaderShrink();
+      setupMobileMenu();
+      initProductLightbox();
     });
   </script>
 
 </body>
+
 </html>

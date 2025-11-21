@@ -1,4 +1,4 @@
-const PRODUTOS = [
+const PRODUCTS = [
   // ---------- APARADORES ----------
   {
     id: "aparador-1",
