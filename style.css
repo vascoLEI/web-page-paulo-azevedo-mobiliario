@@ -27,7 +27,7 @@ header.header-small .navbar {
 }
 
 header.header-small .logo-img {
-  height: 40px;            
+  height: 40px;
 }
 
 
@@ -66,11 +66,9 @@ header {
 .hero-overlay {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.85)
-  );
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.85));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -396,7 +394,7 @@ header {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .contact-social-link:hover {
@@ -413,7 +411,7 @@ header {
   display: flex;
   gap: 1.2rem;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .contact-highlight-icon img {
@@ -452,7 +450,7 @@ footer {
 
 
 .footer-contact {
-  background: #b8895d;
+  background: #494242;
   color: #fff;
   padding: 3rem 2rem 2rem;
   margin-top: 3rem;
@@ -492,7 +490,7 @@ footer {
   opacity: 0.8;
 }
 
-/* ícones sociais */
+/* socials icons */
 .footer-socials {
   display: flex;
   gap: 0.8rem;
@@ -502,7 +500,7 @@ footer {
 .footer-socials img {
   width: 28px;
   height: 28px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
@@ -681,7 +679,7 @@ footer {
   height: 350px;
   border: 0;
   border-radius: 0.6rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .contactos-info {
@@ -751,13 +749,13 @@ footer {
     grid-template-columns: 1fr;
   }
 
-@media (max-width: 768px) {
-  .hero {
-    height: 70vh;
-    background-attachment: scroll; 
-    background-position: center 40%;
+  @media (max-width: 768px) {
+    .hero {
+      height: 70vh;
+      background-attachment: scroll;
+      background-position: center 40%;
+    }
   }
-}
 }
 
 .reveal {
@@ -800,4 +798,26 @@ footer {
   .nav-links.open {
     display: flex;
   }
+
+ .lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+body.lightbox-open header {
+  display: none;
+}
+
 }
