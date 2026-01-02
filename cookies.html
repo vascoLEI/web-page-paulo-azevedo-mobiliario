@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Cookies | Paulo Azevedo Mobiliário</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="logoicon.png" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">
+        <a href="index.html">
+          <img src="images/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img" />
+        </a>
+      </h1>
+
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="products.html">Produtos</a></li>
+        <li><a href="about.html">Sobre nós</a></li>
+        <li><a href="contacts.html">Contactos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="sobre-page">
+    <section class="sobre-layout" style="grid-template-columns: 1fr;">
+      <div class="sobre-texto">
+        <h2>Política de Cookies</h2>
+
+        <p><strong>Última atualização:</strong> 2 de janeiro de 2026</p>
+
+        <h3>1. O que são cookies?</h3>
+        <p>
+          Cookies são pequenos ficheiros armazenados no dispositivo do utilizador que podem ser utilizados
+          para garantir o funcionamento de certas funcionalidades, memorizar preferências e/ou recolher estatísticas.
+        </p>
+
+        <h3>2. Cookies neste site</h3>
+        <p>
+          Este site <strong>não utiliza cookies próprios</strong> para fins de publicidade, personalização avançada ou análise.
+        </p>
+
+        <h3>3. Cookies de terceiros (Google Maps)</h3>
+        <p>
+          O site disponibiliza um mapa através do <strong>Google Maps</strong>. Ao carregar o mapa, poderão ser utilizados
+          cookies e tecnologias semelhantes do Google (terceiros), bem como recolhidos dados técnicos (por exemplo, endereço IP).
+        </p>
+
+        <p>
+          Por motivos de privacidade, o mapa só é carregado após o utilizador dar consentimento explícito (quando aplicável),
+          através do botão “Aceitar e ver mapa”.
+        </p>
+
+        <p>
+          Mais informações sobre cookies da Google:
+          <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">
+            https://policies.google.com/technologies/cookies
+          </a>
+        </p>
+
+        <h3>4. Ligações para redes sociais e WhatsApp</h3>
+        <p>
+          Este site pode incluir ligações (links) para WhatsApp, Instagram e Facebook.
+          Ao clicar nessas ligações, o utilizador será redirecionado para plataformas externas, que podem utilizar cookies
+          e outras tecnologias de acordo com as suas próprias políticas.
+        </p>
+
+        <h3>5. Como gerir cookies</h3>
+        <p>
+          O utilizador pode configurar o seu navegador para bloquear ou eliminar cookies. Note que, ao bloquear cookies de terceiros,
+          algumas funcionalidades externas (como o mapa) podem não funcionar.
+        </p>
+
+        <h3>6. Contacto</h3>
+        <p>
+          Para questões relacionadas com cookies e privacidade, pode contactar-nos através do email:
+          <a href="mailto:pauloazevedomobiliario@gmail.com">pauloazevedomobiliario@gmail.com</a>
+        </p>
+
+        <p style="margin-top: 1.2rem;">
+          Consulte também a nossa <a href="privacidade.html">Política de Privacidade</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
+    <p>
+      <a href="privacidade.html" style="color:#fff;">Política de Privacidade</a> |
+      <a href="cookies.html" style="color:#fff;">Política de Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+    function setupMobileMenu() {
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (!toggle || !navLinks) return;
+
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    window.addEventListener('load', () => {
+      setupMobileMenu();
+    });
+  </script>
+</body>
+</html>

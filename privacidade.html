@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade | Paulo Azevedo Mobiliário</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="logoicon.png" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">
+        <a href="index.html">
+          <img src="images/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img" />
+        </a>
+      </h1>
+
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="products.html">Produtos</a></li>
+        <li><a href="about.html">Sobre nós</a></li>
+        <li><a href="contacts.html">Contactos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="sobre-page">
+    <section class="sobre-layout" style="grid-template-columns: 1fr;">
+      <div class="sobre-texto">
+        <h2>Política de Privacidade</h2>
+
+        <p><strong>Última atualização:</strong> 2 de janeiro de 2026</p>
+
+        <h3>1. Enquadramento</h3>
+        <p>
+          O site <strong>Paulo Azevedo Mobiliário</strong> tem caráter informativo.
+          Respeitamos a privacidade dos utilizadores e procuramos cumprir o Regulamento Geral sobre a Proteção de Dados (RGPD).
+        </p>
+
+        <h3>2. Dados pessoais recolhidos</h3>
+        <p>
+          Este site <strong>não recolhe dados pessoais automaticamente</strong> (não tem formulários, área de cliente, nem newsletter).
+          Ainda assim, poderá contactar-nos por meios externos disponibilizados no site (telefone, email ou WhatsApp).
+          Nesse caso, os dados que decidir partilhar serão tratados apenas para responder ao seu pedido.
+        </p>
+
+        <h3>3. Contactos disponibilizados no site</h3>
+        <p>
+          No site são disponibilizados contactos (telefone, email e WhatsApp). Ao utilizar esses meios, o utilizador
+          está a comunicar diretamente com a loja. O tratamento de dados resultante dessa comunicação destina-se apenas
+          a prestar informação, responder a pedidos e/ou gerir contactos comerciais.
+        </p>
+
+        <h3>4. Ligações para plataformas de terceiros</h3>
+        <p>
+          O site pode incluir ligações (links) para plataformas de terceiros, como <strong>WhatsApp</strong>, <strong>Instagram</strong> e <strong>Facebook</strong>.
+          Ao clicar nessas ligações, o utilizador será redirecionado para sites/serviços externos, sujeitos às respetivas
+          políticas de privacidade e termos de utilização. O presente site não controla os dados recolhidos por esses terceiros.
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">
+              Política de Privacidade do WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">
+              Política de Privacidade do Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">
+              Política de Privacidade do Facebook
+            </a>
+          </li>
+        </ul>
+
+        <h3>5. Google Maps</h3>
+        <p>
+          O site disponibiliza um mapa através do serviço <strong>Google Maps</strong>. Por motivos de privacidade,
+          o mapa só é carregado após o utilizador dar consentimento (quando aplicável). O Google pode recolher dados técnicos
+          (por exemplo, endereço IP e informações do navegador/dispositivo) de acordo com a sua política.
+        </p>
+
+        <p>
+          Mais informações:
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
+            Política de Privacidade da Google
+          </a>
+        </p>
+
+        <h3>6. Conservação de dados</h3>
+        <p>
+          Como regra, este site não conserva dados pessoais por via do próprio website.
+          Se o utilizador contactar a loja por email/telefone/WhatsApp, os dados serão conservados apenas pelo tempo necessário
+          para responder ao pedido e cumprir obrigações legais aplicáveis.
+        </p>
+
+        <h3>7. Direitos do utilizador</h3>
+        <p>
+          Nos termos do RGPD, o utilizador poderá solicitar informação, retificação ou eliminação de dados pessoais que tenha fornecido
+          no âmbito de comunicações com a loja, bem como outros direitos aplicáveis (consoante o caso).
+        </p>
+
+        <h3>8. Contacto</h3>
+        <p>
+          Para questões relacionadas com privacidade, pode contactar-nos através do email:
+          <a href="mailto:pauloazevedomobiliario@gmail.com">pauloazevedomobiliario@gmail.com</a>
+        </p>
+
+        <p style="margin-top: 1.2rem;">
+          Consulte também a nossa <a href="cookies.html">Política de Cookies</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
+    <p>
+      <a href="privacidade.html" style="color:#fff;">Política de Privacidade</a> |
+      <a href="cookies.html" style="color:#fff;">Política de Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+    function setupMobileMenu() {
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (!toggle || !navLinks) return;
+
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    window.addEventListener('load', () => {
+      setupMobileMenu();
+    });
+  </script>
+</body>
+</html>

@@ -35,75 +35,99 @@
     <div class="contactos-grid">
 
       <div class="contactos-mapa">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7866740195836!2d-8.762019025093878!3d41.378719296534555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24468f8eae7b3b%3A0x39d71751914f5325!2sPaulo%20Azevedo%20Mobili%C3%A1rio!5e0!3m2!1spt-PT!2spt!4v1763426293566!5m2!1spt-PT!2spt"
-          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+  <!-- Placeholder (mostra antes do consentimento) -->
+  <div id="map-consent" class="map-placeholder">
+    <div class="map-placeholder-inner">
+      <h4>Mapa da loja</h4>
+      <p>
+        Para proteger a sua privacidade, o Google Maps só é carregado após consentimento,
+        pois pode utilizar cookies de terceiros.
+      </p>
+
+      <button type="button" class="map-accept-btn" onclick="acceptMapCookies()">
+        Aceito, ver o mapa
+      </button>
+
+      <div class="map-links">
+        <a href="cookies.html">Política de Cookies</a>
+        <span>•</span>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="map-container" class="map-frame" style="display:none;"></div>
+</div>
+
+
+
+        <div class="contactos-info">
+          <p class="contactos-label">Morada:</p>
+          <p class="contactos-valor">
+            <strong>RUA ALMIRANTE REIS, 5</strong><br>
+            <strong>4490 - 463 PÓVOA DE VARZIM</strong>
+          </p>
+
+          <p class="contactos-label">Telefone:</p>
+          <p class="contactos-valor">
+            <a href="tel:351915373158">915 373 158</a><br>
+            <span class="contactos-nota">Chamada para a rede móvel nacional</span>
+          </p>
+
+          <p class="contactos-label">E-mail:</p>
+          <p class="contactos-valor">
+            <a href="mailto:pauloazevedomobiliario@gmail.com">
+              pauloazevedomobiliario@gmail.com
+            </a>
+          </p>
+
+          <p class="contactos-label">Redes sociais:</p>
+
+          <div class="contactos-socials">
+            <a href="https://www.instagram.com/paulo.azevedo.758/" target="_blank" class="contact-social-link">
+              <span class="contact-social-icon">
+                <img src="images/Instagram.svg" alt="Instagram">
+              </span>
+              <span class="contact-social-text">@paulo.azevedo.758</span>
+            </a>
+
+            <a href="https://www.facebook.com/pauloazevedomobiliario/" target="_blank" class="contact-social-link">
+              <span class="contact-social-icon">
+                <img src="images/facebook.webp" alt="Facebook">
+              </span>
+              <span class="contact-social-text">/pauloazevedomobiliario</span>
+            </a>
+
+            <a href="https://wa.me/351915373158" target="_blank" class="contact-social-link">
+              <span class="contact-social-icon">
+                <img src="images/WhatsApp.png" alt="WhatsApp">
+              </span>
+              <span class="contact-social-text">WhatsApp: 915 373 158</span>
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="contactos-info">
-        <p class="contactos-label">Morada:</p>
-        <p class="contactos-valor">
-          <strong>RUA ALMIRANTE REIS, 5</strong><br>
-          <strong>4490 - 463 PÓVOA DE VARZIM</strong>
-        </p>
-
-        <p class="contactos-label">Telefone:</p>
-        <p class="contactos-valor">
-          <a href="tel:351915373158">915 373 158</a><br>
-          <span class="contactos-nota">Chamada para a rede móvel nacional</span>
-        </p>
-
-        <p class="contactos-label">E-mail:</p>
-        <p class="contactos-valor">
-          <a href="mailto:pauloazevedomobiliario@gmail.com">
-            pauloazevedomobiliario@gmail.com
-          </a>
-        </p>
-
-        <p class="contactos-label">Redes sociais:</p>
-
-        <div class="contactos-socials">
-          <a href="https://www.instagram.com/paulo.azevedo.758/" target="_blank" class="contact-social-link">
-            <span class="contact-social-icon">
-              <img src="images/Instagram.svg" alt="Instagram">
-            </span>
-            <span class="contact-social-text">@paulo.azevedo.758</span>
-          </a>
-
-          <a href="https://www.facebook.com/pauloazevedomobiliario/" target="_blank" class="contact-social-link">
-            <span class="contact-social-icon">
-              <img src="images/facebook.webp" alt="Facebook">
-            </span>
-            <span class="contact-social-text">/pauloazevedomobiliario</span>
-          </a>
-
-          <a href="https://wa.me/351915373158" target="_blank" class="contact-social-link">
-            <span class="contact-social-icon">
-              <img src="images/WhatsApp.png" alt="WhatsApp">
-            </span>
-            <span class="contact-social-text">WhatsApp: 915 373 158</span>
-          </a>
+      <div class="contact-highlight">
+        <div class="contact-highlight-icon">
+          <img src="images/WhatsApp.png" alt="WhatsApp">
+        </div>
+        <div class="contact-highlight-text">
+          <p class="contact-highlight-title">Tem alguma dúvida?</p>
+          <p>Não hesite em contactar! Estamos disponíveis para esclarecer todas as suas questões.</p>
         </div>
       </div>
-
-    </div>
-
-    <div class="contact-highlight">
-      <div class="contact-highlight-icon">
-        <img src="images/WhatsApp.png" alt="WhatsApp">
-      </div>
-      <div class="contact-highlight-text">
-        <p class="contact-highlight-title">Tem alguma dúvida?</p>
-        <p>Não hesite em contactar! Estamos disponíveis para esclarecer todas as suas questões.</p>
-      </div>
-    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
+    <p>
+      <a href="privacidade.html" style="color:#fff;">Política de Privacidade</a> |
+      <a href="cookies.html" style="color:#fff;">Política de Cookies</a>
+    </p>
   </footer>
+
 
   <!-- Toggles the mobile navigation menu -->
   <script>
@@ -121,6 +145,49 @@
       setupMobileMenu();
     });
   </script>
+
+  <script>
+  const MAP_CONSENT_KEY = "pam_map_consent_v1";
+
+  function buildMapsIframe() {
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7866740195836!2d-8.762019025093878!3d41.378719296534555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24468f8eae7b3b%3A0x39d71751914f5325!2sPaulo%20Azevedo%20Mobili%C3%A1rio!5e0!3m2!1spt-PT!2spt!4v1763426293566!5m2!1spt-PT!2spt";
+    iframe.width = "100%";
+    iframe.height = "350";
+    iframe.style.border = "0";
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "no-referrer-when-downgrade";
+    iframe.allowFullscreen = true;
+    return iframe;
+  }
+
+  function loadMap() {
+    const container = document.getElementById("map-container");
+    const consentBox = document.getElementById("map-consent");
+    if (!container || !consentBox) return;
+
+    if (container.childElementCount === 0) {
+      container.appendChild(buildMapsIframe());
+    }
+    container.style.display = "block";
+    consentBox.style.display = "none";
+  }
+
+  function acceptMapCookies() {
+    try { localStorage.setItem(MAP_CONSENT_KEY, "1"); } catch (e) {}
+    loadMap();
+  }
+
+  function hasMapConsent() {
+    try { return localStorage.getItem(MAP_CONSENT_KEY) === "1"; } catch (e) { return false; }
+  }
+
+  window.addEventListener("load", () => {
+    if (hasMapConsent()) loadMap();
+  });
+</script>
+
+
 
 </body>
 
