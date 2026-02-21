@@ -4,7 +4,7 @@ A design of website for Paulo Azevedo Mobiliário, a store of mobile and upholst
 The task envisage this project was to develop a neat, clean and user-friendly online shop, promoting their goods and ensuring essential store information is available.
 
 **Live Website:**  
-https://vascolei.github.io/web-page-paulo-azevedo-mobiliario/
+[https://vascolei.github.io/web-page-paulo-azevedo-mobiliario/](https://pauloazevedomobiliario.pt/)
 
 
 ---
