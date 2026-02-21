@@ -61,25 +61,23 @@ const PRODUCTS = [
   descricao: "Cama confortável com design contemporâneo e acabamento premium."
 },
 
-  // ---------- COLCHÕES ----------
-  {
-    id: "colchao-1",
-    nome: "Colchão",
-    imagem: "images/antigas/colchão.jpg",
-    categoria: "colchao",
-    descricao: "Colchão confortável, ideal para noites de descanso profundo."
-  },
+// ---------- COLCHÕES ----------
+{
+  id: "colchao-1",
+  nome: "Colchão",
+  imagem: "images/antigas/colchão.jpg",
+  categoria: "colchao",
+  descricao: "Colchão confortável, ideal para noites de descanso profundo."
+},
 
-  // ---------- ESPELHOS / DECORAÇÃO ----------
-
-  {
-    id: "espelho-redondo-2",
-    nome: "Espelho redondo",
-    imagem: "images/antigas/espelho redondo2.jpg",
-    categoria: "decoracao",
-    descricao: "Variante de espelho redondo com detalhes dourados."
-  },
-
+// ---------- ESPELHOS / DECORAÇÃO ----------
+{
+  id: "espelho-redondo-2",
+  nome: "Espelho redondo",
+  imagem: "images/antigas/espelho redondo2.jpg",
+  categoria: "decoracao",
+  descricao: "Variante de espelho redondo com design elegante."
+},
   // ---------- MESAS ----------
 {
   id: "mesa-n-1",
