@@ -59,7 +59,7 @@ const PRODUCTS = [
   imagem: "images/novas/cama/cama-n-5.jpeg",
   categoria: "quarto",
   descricao: "Cama confortável com design contemporâneo e acabamento premium."
-}
+},
 
   // ---------- COLCHÕES ----------
   {
