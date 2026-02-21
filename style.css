@@ -130,7 +130,7 @@ header.header-small .logo-img {
 
 /* Hero background image and main container */
 .hero {
-  background-image: url("images/frente-com-luzes.jpg");
+  background-image: url("images/antigas/frente-com-luzes.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 95%;

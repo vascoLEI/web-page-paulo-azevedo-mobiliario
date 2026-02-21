@@ -39,12 +39,15 @@
     <div class="filtros-wrapper">
       <div class="filtros">
         <button class="filtro-btn active" data-filter="all">Todos</button>
-        <button class="filtro-btn" data-filter="sala">Salas</button>
         <button class="filtro-btn" data-filter="quarto">Quartos</button>
         <button class="filtro-btn" data-filter="colchao">Colchões</button>
-        <button class="filtro-btn" data-filter="decoracao">Decoração</button>
+        <button class="filtro-btn" d  ata-filter="decoracao">Decoração</button>
         <button class="filtro-btn" data-filter="aparador">Aparadores</button>
         <button class="filtro-btn" data-filter="sofa">Sofás</button>
+        <button class="filtro-btn" data-filter="cadeira">Cadeiras</button>
+        <button class="filtro-btn" data-filter="mesa">Mesas</button>
+
+
       </div>
     </div>
 
@@ -98,7 +101,7 @@
 
           filterButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
-
+          
           products.forEach(prod => {
             const category = prod.dataset.categoria;
             if (filter === "all" || category === filter) {
