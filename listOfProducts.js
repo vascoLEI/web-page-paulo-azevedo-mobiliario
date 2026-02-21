@@ -67,6 +67,13 @@ const PRODUCTS = [
     categoria: "quarto",
     descricao: "Cama/sofá-cama montado num quarto decorado."
   },
+  {
+    id: "cama-5",
+    nome: "Cama estofada",
+    imagem: "images/Cama_Paris_cream.jpg",
+    categoria: "quarto",
+    descricao: "Cama."
+  },
 
   // ---------- COLCHÕES ----------
   {
