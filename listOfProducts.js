@@ -115,13 +115,13 @@ const PRODUCTS = [
   descricao: "Mesa elegante com estrutura robusta e estética moderna."
 },  
 
-  // ---------- PUFES ----------
+  // ---------- PUFFS ----------
   {
     id: "pufe-branco",
-    nome: "Pufe branco",
+    nome: "Puff branco",
     imagem: "images/antigas/pufe branco.jpg",
     categoria: "decoracao",
-    descricao: "Pufe redondo estofado em branco, ideal para complementar a sala."
+    descricao: "Puff redondo estofado em branco, ideal para complementar a sala."
   },
 
   // ---------- CADEIRAS ----------
