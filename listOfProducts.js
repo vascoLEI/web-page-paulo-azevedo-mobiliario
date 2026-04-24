@@ -14,6 +14,49 @@ const PRODUCTS = [
     categoria: "aparador",
     descricao: "Aparador em acabamento claro, perfeito para ambientes luminosos."
   },
+  {
+    id: "aparador-3",
+    nome: "Aparador branco",
+    imagem: "images/novas/aparador/Aparador + Espelho branco com ripado carvalho 1,95.jpg.jpeg",
+    categoria: "aparador",
+    descricao: "Aparador moderno branco com detalhes verticais em madeira e base em tom natural, design minimalista e elegante."
+  },
+  {
+    id: "aparador-4",
+    nome: "Aparador branco",
+    imagem: "images/novas/aparador/Aparador + Espelho branco com tampo em carvalho 1,95.jpg.jpeg",
+    categoria: "aparador",
+    descricao: "Aparador contemporâneo branco com cantos arredondados, detalhes em madeira e pés metálicos elegantes."
+  },
+  {
+    id: "aparador-5",
+    nome: "Aparador branco",
+    imagem: "images/novas/aparador/Aparador branco cantos redondos 2m.jpg.jpeg",
+    categoria: "aparador",
+    descricao: "Aparador branco com design curvo e textura canelada, estilo moderno e sofisticado."
+  },
+  {
+    id: "aparador-6",
+    nome: "Aparador Cerejeira",
+    imagem: "images/novas/aparador/Aparador cerejeira com pormenores em branco 1,95.jpg.jpeg",
+    categoria: "aparador",
+    descricao: "Aparador moderno branco com estrutura em madeira e padrão geométrico marcante."
+  },
+  {
+    id: "aparador-7",
+    nome: "Aparador Cinza",
+    imagem: "images/novas/aparador/Aparador lacado cinza tampo mármore 2m.jpg.jpeg",
+    categoria: "aparador",
+    descricao: "Aparador minimalista branco com linhas retas e base escura discreta."
+  },
+  {
+    id: "aparador-8",
+    nome: "Aparador Nogueira",
+    imagem: "images/novas/aparador/Aparador Nogueira com portas brancas 1,95.jpg.jpeg",
+    categoria: "aparador",
+    descricao: "Aparador moderno branco com moldura em madeira e padrão geométrico subtil."
+  },
+
 
   // ---------- ARMÁRIOS / ARRUMAÇÃO ----------
   {
@@ -308,5 +351,34 @@ const PRODUCTS = [
   imagem: "images/novas/sala/sala-n-19.jpeg",
   categoria: "sofa",
   descricao: "Sofá sofisticado com design moderno e conforto excecional."
+},
+/*BASES TV */
+{
+  id: "base-n-1",
+  nome: "Base TV",
+  imagem: "images/novas/base/Base TV + Mesa de centro barco com carvalho natural.jpg.jpeg",
+  categoria: "base",
+  descricao: "Base TV"
+},
+{
+  id: "base-n-2",
+  nome: "Base TV",
+  imagem: "images/novas/base/Base TV + Mesa de centro branca com pés dourados.jpg.jpeg",
+  categoria: "base",
+  descricao: "Base TV"
+},
+{
+  id: "base-n-3",
+  nome: "Base TV",
+  imagem: "images/novas/base/Base TV + Mesa de centro branca com ripado carvalho.jpg.jpeg",
+  categoria: "base",
+  descricao: "Base TV"
+},
+{
+  id: "base-n-4",
+  nome: "Base TV",
+  imagem: "images/novas/base/Base TV + Mesa de centro dupla branca com pés dourados.jpg.jpeg",
+  categoria: "base",
+  descricao: "Base TV"
 },
 ];
