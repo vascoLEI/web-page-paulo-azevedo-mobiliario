@@ -7,6 +7,471 @@
   <title>Contactos | Paulo Azevedo Mobiliário</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logoicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a3b10;
+      --brown-light: #a0521a;
+      --brown-dark: #4e2509;
+      --cream: #f8f4ef;
+      --cream-dark: #ede7de;
+      --text: #2a1f17;
+      --text-muted: #7a6e66;
+      --white: #fff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', Arial, sans-serif;
+      padding-top: 80px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: rgba(248, 244, 239, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(122, 59, 16, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.header-small {
+      box-shadow: 0 2px 12px rgba(42, 31, 23, 0.1);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: padding 0.3s ease;
+    }
+
+    header.header-small .navbar { padding: 0.6rem 2.5rem; }
+
+    .logo { margin: 0; }
+    .logo a { display: inline-block; }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      transition: height 0.3s ease;
+    }
+
+    header.header-small .logo-img { height: 38px; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--brown); }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 1px;
+      background: var(--brown);
+      transition: width 0.4s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active-page::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--brown-dark);
+      padding: 4.5rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("images/antigas/loja de lado.jpg") center/cover no-repeat;
+      opacity: 0.1;
+    }
+
+    .page-hero-inner { position: relative; }
+
+    .page-hero-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.9rem;
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .contactos-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    /* ── GRID ── */
+    .contactos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ── MAP BLOCK ── */
+    .contactos-mapa {
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    /* consent placeholder */
+    .map-placeholder {
+      background: white;
+      border: 1px solid rgba(122, 59, 16, 0.1);
+      border-radius: 3px;
+      padding: 2.5rem 2rem;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-placeholder-inner { max-width: 380px; }
+
+    .map-placeholder-inner h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .map-placeholder-inner p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .map-accept-btn {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      background: var(--brown-dark);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.15s;
+    }
+
+    .map-accept-btn:hover {
+      background: var(--brown);
+      transform: translateY(-1px);
+    }
+
+    .map-links {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .map-links a {
+      color: var(--brown);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .map-links a:hover { text-decoration: underline; }
+    .map-links span { opacity: 0.4; }
+
+    /* loaded map iframe */
+    .map-frame iframe {
+      width: 100%;
+      height: 340px;
+      border: 0;
+      border-radius: 3px;
+      display: block;
+    }
+
+    /* ── CONTACT INFO ── */
+    .contactos-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-block {
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(122, 59, 16, 0.1);
+    }
+
+    .contact-block:first-child { padding-top: 0; }
+    .contact-block:last-child { border-bottom: none; }
+
+    .contactos-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+
+    .contactos-valor {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .contactos-valor a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contactos-valor a:hover { color: var(--brown); }
+
+    .contactos-nota {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ── SOCIALS ── */
+    .contactos-socials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .contact-social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .contact-social-link:hover { color: var(--brown); }
+
+    .contact-social-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(122, 59, 16, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      flex-shrink: 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-social-link:hover .contact-social-icon {
+      border-color: var(--brown);
+      background: var(--cream-dark);
+    }
+
+    .contact-social-icon img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    /* ── WHATSAPP BANNER ── */
+    .whatsapp-banner {
+      margin-top: 3rem;
+      background: white;
+      border: 1px solid rgba(122, 59, 16, 0.1);
+      border-left: 3px solid #25d366;
+      border-radius: 3px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .whatsapp-banner-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-banner-icon img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .whatsapp-banner-text {}
+
+    .whatsapp-banner-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .whatsapp-banner-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .whatsapp-banner-btn {
+      margin-left: auto;
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .whatsapp-banner-btn:hover {
+      background: #1db854;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e1610;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 1.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.85); }
+    footer p + p { margin-top: 0.4rem; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0.8rem 1.5rem; }
+      header.header-small .navbar { padding: 0.5rem 1.5rem; }
+
+      .nav-toggle { display: block; }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(248, 244, 239, 0.98);
+        padding: 0.8rem 0;
+        border-top: 1px solid rgba(122, 59, 16, 0.1);
+        margin-top: 0.5rem;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-links a { display: block; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+
+      .contactos-page { padding: 2.5rem 1.2rem 4rem; }
+
+      .contactos-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .whatsapp-banner {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .whatsapp-banner-btn { margin-left: 0; }
+    }
+  </style>
 </head>
 
 <body>
@@ -17,178 +482,161 @@
           <img src="images/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img">
         </a>
       </h1>
-      <button class="nav-toggle" aria-label="Abrir menu">
-        ☰
-      </button>
-
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
       <ul class="nav-links">
         <li><a href="products.html">Produtos</a></li>
         <li><a href="about.html">Sobre nós</a></li>
-        <li><a href="contacts.html">Contactos</a></li>
+        <li><a href="contacts.html" class="active-page">Contactos</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="contactos" class="contactos">
-    <h3>Contactos</h3>
-
-    <div class="contactos-grid">
-
-      <div class="contactos-mapa">
-  <!-- Placeholder (mostra antes do consentimento) -->
-  <div id="map-consent" class="map-placeholder">
-    <div class="map-placeholder-inner">
-      <h4>Mapa da loja</h4>
-      <p>
-        Para proteger a sua privacidade, o Google Maps só é carregado após consentimento,
-        pois pode utilizar cookies de terceiros.
-      </p>
-
-      <button type="button" class="map-accept-btn" onclick="acceptMapCookies()">
-        Aceito, ver o mapa
-      </button>
-
-      <div class="map-links">
-        <a href="cookies.html">Política de Cookies</a>
-        <span>•</span>
-        <a href="privacidade.html">Política de Privacidade</a>
-      </div>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Paulo Azevedo Mobiliário</p>
+      <h1>Contactos</h1>
+      <p>Estamos disponíveis para o ajudar.</p>
     </div>
   </div>
 
-  <div id="map-container" class="map-frame" style="display:none;"></div>
-</div>
+  <main class="contactos-page">
+    <div class="contactos-grid reveal">
 
+      <div class="contactos-mapa">
+        <div id="map-consent" class="map-placeholder">
+          <div class="map-placeholder-inner">
+            <h4>Mapa da loja</h4>
+            <p>Para proteger a sua privacidade, o Google Maps só é carregado após consentimento, pois pode utilizar cookies de terceiros.</p>
+            <button type="button" class="map-accept-btn" onclick="acceptMapCookies()">Aceito, ver o mapa</button>
+            <div class="map-links">
+              <a href="cookies.html">Política de Cookies</a>
+              <span>•</span>
+              <a href="privacidade.html">Política de Privacidade</a>
+            </div>
+          </div>
+        </div>
+        <div id="map-container" class="map-frame" style="display:none;"></div>
+      </div>
 
-
-        <div class="contactos-info">
-          <p class="contactos-label">Morada:</p>
+      <div class="contactos-info">
+        <div class="contact-block">
+          <p class="contactos-label">Morada</p>
           <p class="contactos-valor">
-            <strong>RUA ALMIRANTE REIS, 5</strong><br>
-            <strong>4490 - 463 PÓVOA DE VARZIM</strong>
+            Rua Almirante Reis, 5<br>
+            4490-463 Póvoa de Varzim
           </p>
+        </div>
 
-          <p class="contactos-label">Telefone:</p>
+        <div class="contact-block">
+          <p class="contactos-label">Telefone</p>
           <p class="contactos-valor">
             <a href="tel:351915373158">915 373 158</a><br>
             <span class="contactos-nota">Chamada para a rede móvel nacional</span>
           </p>
+        </div>
 
-          <p class="contactos-label">E-mail:</p>
+        <div class="contact-block">
+          <p class="contactos-label">E-mail</p>
           <p class="contactos-valor">
-            <a href="mailto:pauloazevedomobiliario@gmail.com">
-              pauloazevedomobiliario@gmail.com
-            </a>
+            <a href="mailto:pauloazevedomobiliario@gmail.com">pauloazevedomobiliario@gmail.com</a>
           </p>
+        </div>
 
-          <p class="contactos-label">Redes sociais:</p>
-
+        <div class="contact-block">
+          <p class="contactos-label">Redes sociais</p>
           <div class="contactos-socials">
             <a href="https://www.instagram.com/paulo.azevedo.758/" target="_blank" class="contact-social-link">
-              <span class="contact-social-icon">
-                <img src="images/Instagram.svg" alt="Instagram">
-              </span>
-              <span class="contact-social-text">@paulo.azevedo.758</span>
+              <span class="contact-social-icon"><img src="images/Instagram.svg" alt="Instagram"></span>
+              <span>@paulo.azevedo.758</span>
             </a>
-
             <a href="https://www.facebook.com/pauloazevedomobiliario/" target="_blank" class="contact-social-link">
-              <span class="contact-social-icon">
-                <img src="images/facebook.webp" alt="Facebook">
-              </span>
-              <span class="contact-social-text">/pauloazevedomobiliario</span>
+              <span class="contact-social-icon"><img src="images/facebook.webp" alt="Facebook"></span>
+              <span>/pauloazevedomobiliario</span>
             </a>
-
             <a href="https://wa.me/351915373158" target="_blank" class="contact-social-link">
-              <span class="contact-social-icon">
-                <img src="images/WhatsApp.png" alt="WhatsApp">
-              </span>
-              <span class="contact-social-text">WhatsApp: 915 373 158</span>
+              <span class="contact-social-icon"><img src="images/WhatsApp.png" alt="WhatsApp"></span>
+              <span>WhatsApp: 915 373 158</span>
             </a>
           </div>
         </div>
-
       </div>
 
-      <div class="contact-highlight">
-        <div class="contact-highlight-icon">
-          <img src="images/WhatsApp.png" alt="WhatsApp">
-        </div>
-        <div class="contact-highlight-text">
-          <p class="contact-highlight-title">Tem alguma dúvida?</p>
-          <p>Não hesite em contactar! Estamos disponíveis para esclarecer todas as suas questões.</p>
-        </div>
-      </div>
-  </section>
+    </div>
+
+  </main>
 
   <footer>
     <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
     <p>
-      <a href="privacidade.html" style="color:#fff;">Política de Privacidade</a> |
-      <a href="cookies.html" style="color:#fff;">Política de Cookies</a>
+      <a href="privacidade.html">Política de Privacidade</a> &nbsp;|&nbsp;
+      <a href="cookies.html">Política de Cookies</a>
     </p>
   </footer>
 
-
-  <!-- Toggles the mobile navigation menu -->
   <script>
     function setupMobileMenu() {
       const toggle = document.querySelector('.nav-toggle');
       const navLinks = document.querySelector('.nav-links');
       if (!toggle || !navLinks) return;
-
-      toggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-      });
+      toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
     }
-
-    window.addEventListener('load', () => {
-      setupMobileMenu();
-    });
+    window.addEventListener('load', setupMobileMenu);
   </script>
 
   <script>
-  const MAP_CONSENT_KEY = "pam_map_consent_v1";
-
-  function buildMapsIframe() {
-    const iframe = document.createElement("iframe");
-    iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7866740195836!2d-8.762019025093878!3d41.378719296534555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24468f8eae7b3b%3A0x39d71751914f5325!2sPaulo%20Azevedo%20Mobili%C3%A1rio!5e0!3m2!1spt-PT!2spt!4v1763426293566!5m2!1spt-PT!2spt";
-    iframe.width = "100%";
-    iframe.height = "350";
-    iframe.style.border = "0";
-    iframe.loading = "lazy";
-    iframe.referrerPolicy = "no-referrer-when-downgrade";
-    iframe.allowFullscreen = true;
-    return iframe;
-  }
-
-  function loadMap() {
-    const container = document.getElementById("map-container");
-    const consentBox = document.getElementById("map-consent");
-    if (!container || !consentBox) return;
-
-    if (container.childElementCount === 0) {
-      container.appendChild(buildMapsIframe());
+    function setupHeaderShrink() {
+      const header = document.querySelector('header');
+      if (!header) return;
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('header-small', window.scrollY > 50);
+      });
     }
-    container.style.display = "block";
-    consentBox.style.display = "none";
-  }
+    window.addEventListener('load', setupHeaderShrink);
+  </script>
 
-  function acceptMapCookies() {
-    try { localStorage.setItem(MAP_CONSENT_KEY, "1"); } catch (e) {}
-    loadMap();
-  }
+  <script>
+    const MAP_CONSENT_KEY = "pam_map_consent_v1";
 
-  function hasMapConsent() {
-    try { return localStorage.getItem(MAP_CONSENT_KEY) === "1"; } catch (e) { return false; }
-  }
+    function buildMapsIframe() {
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.7866740195836!2d-8.762019025093878!3d41.378719296534555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24468f8eae7b3b%3A0x39d71751914f5325!2sPaulo%20Azevedo%20Mobili%C3%A1rio!5e0!3m2!1spt-PT!2spt!4v1763426293566!5m2!1spt-PT!2spt";
+      iframe.width = "100%";
+      iframe.height = "340";
+      iframe.style.border = "0";
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      iframe.allowFullscreen = true;
+      return iframe;
+    }
 
-  window.addEventListener("load", () => {
-    if (hasMapConsent()) loadMap();
-  });
-</script>
+    function loadMap() {
+      const container = document.getElementById("map-container");
+      const consentBox = document.getElementById("map-consent");
+      if (!container || !consentBox) return;
+      if (container.childElementCount === 0) container.appendChild(buildMapsIframe());
+      container.style.display = "block";
+      consentBox.style.display = "none";
+    }
 
+    function acceptMapCookies() {
+      try { localStorage.setItem(MAP_CONSENT_KEY, "1"); } catch (e) {}
+      loadMap();
+    }
 
+    function hasMapConsent() {
+      try { return localStorage.getItem(MAP_CONSENT_KEY) === "1"; } catch (e) { return false; }
+    }
+
+    window.addEventListener("load", () => { if (hasMapConsent()) loadMap(); });
+  </script>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 
 </body>
-
 </html>

@@ -7,6 +7,486 @@
   <title>Sobre nós | Paulo Azevedo Mobiliário</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logoicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #7a3b10;
+      --brown-light: #a0521a;
+      --brown-dark: #4e2509;
+      --cream: #f8f4ef;
+      --cream-dark: #ede7de;
+      --text: #2a1f17;
+      --text-muted: #7a6e66;
+      --white: #fff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', Arial, sans-serif;
+      padding-top: 80px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: rgba(248, 244, 239, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(122, 59, 16, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.header-small { box-shadow: 0 2px 12px rgba(42, 31, 23, 0.1); }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: padding 0.3s ease;
+    }
+
+    header.header-small .navbar { padding: 0.6rem 2.5rem; }
+
+    .logo { margin: 0; }
+    .logo a { display: inline-block; }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      transition: height 0.3s ease;
+    }
+
+    header.header-small .logo-img { height: 38px; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--brown); }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 1px;
+      background: var(--brown);
+      transition: width 0.4s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active-page::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--brown-dark);
+      padding: 4.5rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("images/antigas/loja de lado.jpg") center/cover no-repeat;
+      opacity: 0.12;
+    }
+
+    .page-hero-inner { position: relative; }
+
+    .page-hero-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.9rem;
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+
+    /* ── MAIN ── */
+    .sobre-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    /* ── TWO-COLUMN INTRO ── */
+    .sobre-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .sobre-imagem {
+      position: relative;
+    }
+
+    .sobre-imagem img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* decorative offset frame */
+    .sobre-imagem::after {
+      content: "";
+      position: absolute;
+      inset: -14px -14px auto auto;
+      width: 55%;
+      height: 55%;
+      border: 1px solid rgba(122, 59, 16, 0.2);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .sobre-texto {}
+
+    .sobre-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+
+    .sobre-texto h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 1.8rem;
+    }
+
+    .sobre-texto p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .sobre-texto p:last-of-type { margin-bottom: 0; }
+
+    .sobre-texto p em {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05em;
+      color: var(--brown-light);
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(122, 59, 16, 0.12);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      background: white;
+    }
+
+    .stat-item {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(122, 59, 16, 0.12);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--brown-dark);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* ── VALUES ── */
+    .valores-section {}
+
+    .section-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.8rem;
+    }
+
+    .valores-section h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .valor-card {
+      padding: 2rem 1.8rem;
+      background: white;
+      border: 1px solid rgba(122, 59, 16, 0.08);
+      border-radius: 3px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .valor-card:hover {
+      box-shadow: 0 8px 28px rgba(42, 31, 23, 0.09);
+      transform: translateY(-3px);
+    }
+
+    .valor-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: rgba(122, 59, 16, 0.18);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .valor-card h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .valor-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      margin-top: 5rem;
+      background: var(--brown-dark);
+      border-radius: 3px;
+      padding: 3.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: "";
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-band::after {
+      content: "";
+      position: absolute;
+      right: -20px; top: -20px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-band-text h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .cta-band-text p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .cta-band-btn {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.25s, border-color 0.25s;
+      position: relative;
+    }
+
+    .cta-band-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: white;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e1610;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 1.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.85); }
+    footer p + p { margin-top: 0.4rem; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0.8rem 1.5rem; }
+      header.header-small .navbar { padding: 0.5rem 1.5rem; }
+
+      .nav-toggle { display: block; }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(248, 244, 239, 0.98);
+        padding: 0.8rem 0;
+        border-top: 1px solid rgba(122, 59, 16, 0.1);
+        margin-top: 0.5rem;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-links a { display: block; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+
+      .sobre-page { padding: 3rem 1.2rem 4rem; }
+
+      .sobre-intro {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .sobre-imagem::after { display: none; }
+
+      .sobre-imagem img { aspect-ratio: 16 / 9; }
+
+      .stats-strip {
+        grid-template-columns: 1fr;
+        margin-bottom: 3rem;
+      }
+
+      .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(122, 59, 16, 0.12);
+        padding: 1.8rem 1.5rem;
+      }
+
+      .stat-item:last-child { border-bottom: none; }
+
+      .valores-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+      .cta-band {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        margin-top: 3rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -17,76 +497,133 @@
           <img src="images/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img">
         </a>
       </h1>
-      <button class="nav-toggle" aria-label="Abrir menu">
-        ☰
-      </button>
-
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
       <ul class="nav-links">
         <li><a href="products.html">Produtos</a></li>
-        <li><a href="about.html">Sobre nós</a></li>
+        <li><a href="about.html" class="active-page">Sobre nós</a></li>
         <li><a href="contacts.html">Contactos</a></li>
       </ul>
     </nav>
   </header>
 
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Paulo Azevedo Mobiliário</p>
+      <h1>Sobre nós</h1>
+      <p>Mais de 30 anos a tornar as casas mais bonitas.</p>
+    </div>
+  </div>
+
   <main class="sobre-page">
-    <section class="sobre-layout">
+
+    <div class="sobre-intro reveal">
       <div class="sobre-imagem">
         <img src="images/antigas/loja de lado.jpg" alt="Interior da loja Paulo Azevedo Mobiliário">
       </div>
 
       <div class="sobre-texto">
-        <h2>Sobre nós</h2>
+        <p class="sobre-eyebrow">A nossa história</p>
+        <h2>Uma loja feita de dedicação e atenção ao detalhe</h2>
         <p>
-          Somos uma empresa sediada na cidade da Póvoa de Varzim.
-          Comercializamos todo o tipo de mobiliário, estofos, colchões, estrados, cozinhas e roupeiros.
-          Fazemos orçamentos gratuitos de todo o tipo de mobiliário por medida.
+          Somos uma empresa sediada na cidade da Póvoa de Varzim, onde comercializamos todo o tipo de
+          mobiliário, estofos, colchões, estrados, cozinhas e roupeiros. Fazemos orçamentos gratuitos
+          de todo o tipo de mobiliário por medida.
         </p>
         <p>
-          Na Paulo Azevedo Mobiliário, acreditamos que cada cliente merece uma solução pensada à sua medida.
-          Trabalhamos sempre de forma próxima e personalizada, ouvindo com atenção cada pedido para encontrar
-          exatamente aquilo que melhor satisfaz as suas necessidades.
+          Acreditamos que cada cliente merece uma solução pensada à sua medida. Trabalhamos sempre de
+          forma próxima e personalizada, ouvindo com atenção cada pedido para encontrar exatamente
+          aquilo que melhor satisfaz as suas necessidades.
         </p>
-
         <p>
-          Com mais de 30 anos de experiência no setor, unimos conhecimento, qualidade e dedicação em cada projeto.
-          Desde mobiliário e estofos por medida até soluções completas para o lar, o nosso compromisso é garantir
-          que cada cliente se sinta acompanhado e confiante em todas as etapas — da escolha à entrega final.
-        </p>
-
-        <p>
-          Aqui, cada detalhe conta. E é por isso que continuamos a tornar as casas cada vez mais bonitas.
+          <em>Aqui, cada detalhe conta. E é por isso que continuamos a tornar as casas cada vez mais bonitas.</em>
         </p>
       </div>
-    </section>
+    </div>
+
+    <div class="stats-strip reveal">
+      <div class="stat-item">
+        <p class="stat-number">30<span style="font-size:1.8rem">+</span></p>
+        <p class="stat-label">Anos de experiência</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number">100%</p>
+        <p class="stat-label">Por medida</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number" style="font-size:1.9rem; line-height:1.25;">Entrega e montagem dos móveis</p>
+      </div>
+    </div>
+
+    <div class="valores-section reveal">
+      <p class="section-eyebrow">O nosso compromisso</p>
+      <h3>O que nos define</h3>
+      <div class="valores-grid">
+        <div class="valor-card">
+          <p class="valor-number">01</p>
+          <h4>Personalização</h4>
+          <p>Cada projeto é único. Trabalhamos de perto com cada cliente para criar soluções que se adaptam ao seu espaço e gosto pessoal.</p>
+        </div>
+        <div class="valor-card">
+          <p class="valor-number">02</p>
+          <h4>Qualidade</h4>
+          <p>Selecionamos materiais e fornecedores com critério, garantindo que cada peça tem a durabilidade e o acabamento que merece.</p>
+        </div>
+        <div class="valor-card">
+          <p class="valor-number">03</p>
+          <h4>Proximidade</h4>
+          <p>Acompanhamos o cliente em todas as etapas — da escolha à entrega — para que o resultado final supere as expectativas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-band reveal">
+      <div class="cta-band-text">
+        <h3>Pronto para transformar a sua casa?</h3>
+        <p>Visite-nos ou contacte-nos.</p>
+      </div>
+      <a href="contacts.html" class="cta-band-btn">Falar connosco</a>
+    </div>
+
   </main>
 
   <footer>
-  <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
-  <p>
-    <a href="privacidade.html" style="color:#fff;">Política de Privacidade</a> |
-    <a href="cookies.html" style="color:#fff;">Política de Cookies</a>
-  </p>
-</footer>
+    <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
+    <p>
+      <a href="privacidade.html">Política de Privacidade</a> &nbsp;|&nbsp;
+      <a href="cookies.html">Política de Cookies</a>
+    </p>
+  </footer>
 
-
-  <!-- Toggles the mobile navigation menu -->
   <script>
     function setupMobileMenu() {
       const toggle = document.querySelector('.nav-toggle');
       const navLinks = document.querySelector('.nav-links');
       if (!toggle || !navLinks) return;
+      toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    }
+    window.addEventListener('load', setupMobileMenu);
+  </script>
 
-      toggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
+  <script>
+    function setupHeaderShrink() {
+      const header = document.querySelector('header');
+      if (!header) return;
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('header-small', window.scrollY > 50);
       });
     }
+    window.addEventListener('load', setupHeaderShrink);
+  </script>
 
-    window.addEventListener('load', () => {
-      setupMobileMenu();
-    });
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
   </script>
 
 </body>
-
 </html>

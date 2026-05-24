@@ -1,5 +1,5 @@
 /* ===========================
-   Root variables & global reset
+   Root variables
    =========================== */
 :root {
   --main-color: #8b4513d7;
@@ -7,7 +7,9 @@
   --dark: #333;
 }
 
-/* Reset margins, paddings and default font */
+/* ===========================
+   Global reset
+   =========================== */
 * {
   margin: 0;
   padding: 0;
@@ -15,27 +17,15 @@
   font-family: Arial, sans-serif;
 }
 
-/* Add top padding so content is not hidden behind fixed header */
 body {
   background-color: #fff;
   color: #333;
   padding-top: 80px;
 }
 
-/* When lightbox is open, lock scroll and hide header */
-body.lightbox-open {
-  overflow: hidden;
-}
-
-body.lightbox-open header {
-  display: none;
-}
-
 /* ===========================
    Header & navigation
    =========================== */
-
-/* Default header style */
 header {
   background: #f2f2f2;
   color: #000;
@@ -48,13 +38,11 @@ header {
   transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-/* Smaller header style when scrolling */
 header.header-small {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   background: #f8f8f8;
 }
 
-/* Inner navbar container */
 .navbar {
   max-width: 1100px;
   margin: 0 auto;
@@ -65,7 +53,9 @@ header.header-small {
   transition: padding 0.3s ease;
 }
 
-/* Logo image size and smooth resizing */
+.logo { margin: 0; }
+.logo a { display: inline-block; }
+
 .logo-img {
   height: 60px;
   width: auto;
@@ -73,24 +63,15 @@ header.header-small {
   transition: height 0.3s ease;
 }
 
-/* Logo container */
-.logo {
-  margin: 0;
-}
+header.header-small .navbar { padding: 0.4rem 2rem; }
+header.header-small .logo-img { height: 40px; }
 
-/* Make logo clickable area consistent */
-.logo a {
-  display: inline-block;
-}
-
-/* Navigation links container */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
 
-/* Navigation links style */
 .nav-links a {
   color: #000;
   text-decoration: none;
@@ -98,7 +79,6 @@ header.header-small {
   position: relative;
 }
 
-/* Underline animation on nav links */
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -110,680 +90,8 @@ header.header-small {
   transition: width 0.5s;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
+.nav-links a:hover::after { width: 100%; }
 
-/* Smaller header padding when class is applied */
-header.header-small .navbar {
-  padding: 0.4rem 2rem;
-}
-
-/* Smaller logo when header is shrunk */
-header.header-small .logo-img {
-  height: 40px;
-}
-
-/* ===========================
-   Hero section (home page)
-   =========================== */
-
-/* Hero background image and main container */
-.hero {
-  background-image: url("images/antigas/frente-com-luzes.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 95%;
-  background-attachment: fixed;
-  height: 90vh;
-  position: relative;
-}
-
-/* Dark overlay on top of hero image */
-.hero-overlay {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Centered content in hero */
-.hero-content {
-  text-align: center;
-  color: white;
-  padding: 2rem;
-  border-radius: 1rem;
-}
-
-/* Hero title */
-.hero-content h2 {
-  font-size: 2.3rem;
-  margin-bottom: 1rem;
-}
-
-/* Hero subtitle */
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 1.2rem;
-}
-
-/* Generic primary button animation*/
-.btn-primary {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.btn-primary:hover::after {
-  transform: scaleX(1);
-}
-
-/* ===========================
-   "Sobre" section (home simple about)
-   =========================== */
-
-/* Wrapper for simple about section on home */
-.sobre {
-  padding: 3rem 2rem;
-}
-
-/* Inner container for about text on home */
-.sobre-inner {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* About heading */
-.sobre h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-/* About paragraph */
-.sobre p {
-  line-height: 1.6;
-}
-
-/* ===========================
-   Gallery / product highlight on home
-   =========================== */
-
-/* Section wrapping the gallery on the home page */
-.galeria {
-  padding: 3rem 2rem;
-  text-align: center;
-  background: var(--secondary-color);
-}
-
-/* Title for gallery */
-.galeria h3 {
-  font-size: 2rem;
-}
-
-/* Subtitle under gallery title */
-.galeria-subtitle {
-  margin-top: 0.5rem;
-  color: #666;
-}
-
-/* ===========================
-   Products carousel on home
-   =========================== */
-
-/* Outer container of the carousel */
-.produtos-carousel {
-  max-width: 1100px;
-  margin: 2rem auto 0 auto;
-  overflow: hidden;
-}
-
-/* Flex container with all slides */
-.produtos-track {
-  display: flex;
-  gap: 2rem;
-  transition: transform 0.5s ease;
-}
-
-/* Single product card in carousel */
-.produto {
-  flex: 0 0 calc(100% / 3);
-  text-align: center;
-}
-
-/* Product image in carousel */
-.produto img {
-  width: 100%;
-  border-radius: 0.5rem;
-  object-fit: cover;
-  height: 320px;
-}
-
-/* Product name under image */
-.produto p {
-  margin-top: 0.5rem;
-  font-weight: bold;
-}
-
-/* Carousel navigation buttons*/
-.carousel-btn {
-  border: none;
-  background: rgba(0, 0, 0, 0.05);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.4rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, transform 0.1s;
-}
-
-.carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-/* ===========================
-   Global lightbox for images
-   =========================== */
-
-/* Fullscreen dark overlay for enlarged images */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-}
-
-/* Enlarged image inside lightbox */
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  transition: transform 0.3s ease;
-}
-
-/* Slight zoom on hover to make it feel interactive */
-.lightbox img:hover {
-  transform: scale(1.03);
-}
-
-/* Gallery images that can open the lightbox */
-.galeria-img {
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.galeria-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* ===========================
-   Contacts section (generic)
-   =========================== */
-
-/* Wrapper for contacts sections */
-.contactos {
-  padding: 3rem 2rem;
-}
-
-/* Main title in contacts page */
-.contactos h3 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-}
-
-/* Grid layout for contacts*/
-.contactos-grid {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: 2rem;
-}
-
-/* Contacts text info block */
-.contactos-info p {
-  margin-bottom: 0.5rem;
-}
-
-/* Links inside contacts info */
-.contactos-info a {
-  color: var(--main-color);
-  text-decoration: none;
-}
-
-.contactos-info a:hover {
-  text-decoration: underline;
-}
-
-/* Map link/button styling */
-.contactos-mapa a {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.7rem 1.2rem;
-  border-radius: 0.4rem;
-  border: 1px solid var(--main-color);
-  text-decoration: none;
-  color: var(--main-color);
-  transition: background 0.2s, color 0.2s;
-}
-
-.contactos-mapa a:hover {
-  background: var(--main-color);
-  color: #fff;
-}
-
-/* Social media vertical list on contacts page */
-.contactos-socials {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 0.4rem;
-}
-
-/* Single social media row */
-.contact-social-link {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-/* Container for social icon */
-.contact-social-icon img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Hover effect for social links */
-.contact-social-link:hover {
-  text-decoration: underline;
-}
-
-/* Highlight box on contacts page */
-.contact-highlight {
-  max-width: 1100px;
-  margin: 2.5rem auto 0 auto;
-  padding: 1.5rem 1.5rem;
-  border-radius: 0.8rem;
-  background: #f7f2ec;
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-/* Icon inside the highlight box */
-.contact-highlight-icon img {
-  width: 52px;
-  height: 52px;
-}
-
-/* Title line in highlight box */
-.contact-highlight-title {
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-
-/* Text inside highlight box */
-.contact-highlight-text p {
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* ===========================
-   Footer
-   =========================== */
-
-/* Main footer bar at very bottom */
-footer {
-  background: #3a342f;
-  color: white;
-  text-align: center;
-  padding: 1.2rem;
-  font-size: 0.85rem;
-}
-
-/* Extended footer contact area above main footer */
-.footer-contact {
-  background: #494242;
-  color: #fff;
-  padding: 3rem 2rem 2rem;
-  margin-top: 3rem;
-}
-
-/* Inner grid for extended footer */
-.footer-contact-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
-}
-
-/* Column inside footer contact */
-.footer-col h4 {
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-/* Footer text paragraphs */
-.footer-col p {
-  margin-bottom: 0.6rem;
-  line-height: 1.5;
-}
-
-/* Footer links */
-.footer-col a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-col a:hover {
-  text-decoration: underline;
-}
-
-/* Small note under phone number */
-.contact-note {
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
-
-/* Row of social icons in footer */
-.footer-socials {
-  display: flex;
-  gap: 0.8rem;
-  align-items: center;
-}
-
-/* Social icons size and hover animation */
-.footer-socials img {
-  width: 28px;
-  height: 28px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.footer-socials a:hover img {
-  transform: translateY(-2px);
-  opacity: 0.85;
-}
-
-/* ===========================
-   Products page layout
-   =========================== */
-
-/* Wrapper for products page content */
-.produtos-page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Header text on products page */
-.produtos-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* Products page title */
-.produtos-header h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Sticky filter bar wrapper */
-.filtros-wrapper {
-  position: sticky;
-  top: 60px;
-  z-index: 900;
-  background: #f5f5f5;
-  padding: 0.75rem 0 1rem;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-/* Inner filter buttons container */
-.filtros {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-/* Filter button style */
-.filtro-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--main-color);
-  background: white;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.2s, color 0.2s, transform 0.1s;
-}
-
-/* Hover feedback on filter buttons */
-.filtro-btn:hover {
-  background: var(--main-color);
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-/* Active filter button */
-.filtro-btn.active {
-  background: var(--main-color);
-  color: #fff;
-}
-
-/* Grid of product cards on products page */
-.produtos-grid-page {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Single product card styling */
-.produto-card {
-  background: #fff;
-  border-radius: 0.8rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Hover effect on product cards */
-.produto-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Product image in card */
-.produto-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-/* Product name in card */
-.produto-card h3 {
-  font-size: 1.1rem;
-  margin: 0.8rem 1rem 0.3rem 1rem;
-}
-
-/* Product description in card */
-.produto-card p {
-  font-size: 0.9rem;
-  margin: 0 1rem 1rem 1rem;
-  color: #555;
-}
-
-/* ===========================
-   About page layout
-   =========================== */
-
-/* Wrapper for about page main content */
-.sobre-page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-}
-
-/* Two-column layout */
-.sobre-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-  gap: 2rem;
-  align-items: center;
-  margin-bottom: 3rem;
-}
-
-/* About page image styling */
-.sobre-imagem img {
-  width: 100%;
-  border-radius: 0.8rem;
-  object-fit: cover;
-  max-height: 420px;
-}
-
-/* About page text block */
-.sobre-texto h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-/* Paragraphs on about page */
-.sobre-texto p {
-  line-height: 1.6;
-  margin-bottom: 0.8rem;
-}
-
-/* Call to action area under gallery */
-.galeria-cta {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-/* Button appearance inside gallery call to action */
-.galeria-cta .btn-primary {
-  display: inline-block;
-}
-
-/* ===========================
-   Contacts page layout
-   =========================== */
-
-/* Contacts wrapper specific for contacts page with bigger grid */
-.contactos-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: start;
-}
-
-/* Embedded Google Maps iframe styling */
-.contactos-mapa iframe {
-  width: 100%;
-  height: 350px;
-  border: 0;
-  border-radius: 0.6rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
-/* Contacts page text style */
-.contactos-info {
-  font-size: 0.95rem;
-  color: #444;
-}
-
-/* Small label above each contact field */
-.contactos-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #888;
-  margin-bottom: 0.2rem;
-}
-
-/* Main value for contact fields */
-.contactos-valor {
-  margin-bottom: 1.2rem;
-  line-height: 1.5;
-}
-
-/* Links inside contact value block */
-.contactos-valor a {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contactos-valor a:hover {
-  text-decoration: underline;
-}
-
-/* Note under phone number */
-.contactos-nota {
-  font-size: 0.8rem;
-  color: #888;
-}
-
-/* ===========================
-   Reveal animation
-   =========================== */
-
-/* Classes to animate elements on scroll */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===========================
-   Mobile navigation toggle button
-   =========================== */
-
-/* Mobile menu toggle */
 .nav-toggle {
   display: none;
   background: none;
@@ -793,68 +101,88 @@ footer {
 }
 
 /* ===========================
-   Responsive adjustments
+   About/Privacy/Cookies page layout
    =========================== */
+.sobre-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
 
-/* Global mobile breakpoint */
+.sobre-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.sobre-texto h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sobre-texto h3 {
+  font-size: 1.2rem;
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.sobre-texto p {
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.sobre-texto a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.sobre-texto a:hover { text-decoration: underline; }
+
+.sobre-texto ul {
+  padding-left: 1.4rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.7;
+}
+
+.sobre-texto ul a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.sobre-texto ul a:hover { text-decoration: underline; }
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+  background: #3a342f;
+  color: white;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover { text-decoration: underline; }
+
+/* ===========================
+   Mobile
+   =========================== */
 @media (max-width: 768px) {
-  /* Stack logo and links more naturally */
   .navbar {
     flex-wrap: wrap;
     flex-direction: column;
     gap: 1rem;
   }
 
-  /* Adjust hero height and background behavior on small screens */
-  .hero {
-    height: 70vh;
-    background-attachment: scroll;
-    background-position: center 40%;
-  }
+  .nav-toggle { display: block; }
 
-  /* Products in home carousel occupy full width on mobile */
-  .produto {
-    flex: 0 0 100%;
-  }
-
-  .produto img {
-    height: 260px;
-  }
-
-  /* About page layout becomes single column on mobile */
-  .sobre-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sobre-page {
-    padding: 2rem 1.2rem;
-  }
-
-  /* Contacts grid becomes single column on mobile */
-  .contactos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contactos {
-    padding: 2.5rem 1.5rem;
-  }
-
-  /* Footer contact padding reduced on mobile */
-  .footer-contact {
-    padding: 2.5rem 1.5rem 2rem;
-  }
-
-  /* Sticky filters slightly lower for mobile because of header height */
-  .filtros-wrapper {
-    top: 70px;
-  }
-
-  /* Show mobile nav toggle button */
-  .nav-toggle {
-    display: block;
-  }
-
-  /* Hide nav links by default on mobile */
   .nav-links {
     width: 100%;
     justify-content: center;
@@ -863,90 +191,8 @@ footer {
     display: none;
   }
 
-  /* Show nav links when .open is toggled by JS */
-  .nav-links.open {
-    display: flex;
-  }
+  .nav-links.open { display: flex; }
 
-  /* Contact highlight box spacing on mobile */
-  .contact-highlight {
-    padding: 1.2rem 1rem;
-    margin-top: 2rem;
-  }
-
-  /* Google maps */
-.map-consent {
-  width: 100%;
-  height: 350px;
-  border-radius: 0.6rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  background: #f7f2ec;
-  border: 1px solid rgba(0,0,0,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.2rem;
-}
-
-.map-consent-card {
-  max-width: 520px;
-  text-align: left;
-}
-
-.map-consent-btn{
-  appearance: none;
-  border: none;
-  background: var(--main-color);
-  color: #fff;
-
-  padding: 0.78rem 1.2rem;
-  border-radius: 999px;
-
-  font-weight: 800;
-  letter-spacing: 0.02em;
-
-  cursor: pointer;
-  box-shadow: 0 10px 18px rgba(0,0,0,0.14);
-  transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-.map-consent-btn:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 14px 24px rgba(0,0,0,0.18);
-  filter: brightness(1.03);
-}
-
-.map-consent-btn:active{
-  transform: translateY(0px);
-}
-
-.map-consent-btn:focus-visible{
-  outline: 3px solid rgba(139, 69, 19, 0.35);
-  outline-offset: 3px;
-}
-
-.map-consent-links{
-  margin-top: 0.9rem;
-  font-size: 0.9rem;
-  opacity: 0.95;
-}
-
-.map-consent-links a{
-  color: var(--main-color);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.map-consent-links a:hover{
-  text-decoration: underline;
-}
-
-#map-container iframe{
-  width: 100%;
-  height: 350px;
-  border: 0;
-  border-radius: 0.6rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
+  .sobre-layout { grid-template-columns: 1fr; }
+  .sobre-page { padding: 2rem 1.2rem; }
 }
