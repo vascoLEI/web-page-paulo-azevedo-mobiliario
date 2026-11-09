@@ -1,0 +1,146 @@
+:root { --brown: #7a3b10; --brown-light: #a0521a; --brown-dark: #4e2509; --cream: #f8f4ef; --cream-dark: #ede7de; --text: #2a1f17; --text-muted: #7a6e66; --white: #fff; }
+
+*, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: var(--cream); color: var(--text); font-family: DM Sans, Arial, sans-serif; padding-top: 80px; }
+
+header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(248, 244, 239, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(122, 59, 16, 0.08); transition: box-shadow 0.3s ease; }
+
+header.header-small { box-shadow: 0 2px 12px rgba(42, 31, 23, 0.1); }
+
+.navbar { max-width: 1200px; margin: 0 auto; padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; transition: padding 0.3s ease; }
+
+header.header-small .navbar { padding: 0.6rem 2.5rem; }
+
+.logo { margin: 0; }
+
+.logo a { display: inline-block; }
+
+.logo-img { height: 48px; width: auto; display: block; transition: height 0.3s ease; }
+
+header.header-small .logo-img { height: 38px; }
+
+.nav-links { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
+
+.nav-links a { font-family: DM Sans, sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0; text-transform: uppercase; color: var(--text); text-decoration: none; position: relative; transition: color 0.25s; }
+
+.nav-links a:hover { color: var(--brown); }
+
+.nav-links a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--brown); transition: width 0.4s ease; }
+
+.nav-links a:hover::after, .nav-links a.active-page::after { width: 100%; }
+
+.nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
+
+.page-hero { background: var(--brown-dark); padding: 4.5rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+
+.page-hero::before { content: ""; position: absolute; inset: 0; background: url("../images/antigas/loja de lado.jpg") center center / cover no-repeat; opacity: 0.1; }
+
+.page-hero-inner { position: relative; }
+
+.page-hero-label { font-family: DM Sans, sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.9rem; }
+
+.page-hero h1 { font-family: Cormorant Garamond, Georgia, serif; font-size: 3.8rem; font-weight: 400; color: white; line-height: 1.1; margin-bottom: 0.8rem; }
+
+.page-hero p { color: rgba(255,255,255,0.6); font-size: 0.92rem; font-weight: 300; }
+
+.contactos-page { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 5rem; }
+
+.contactos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+.contactos-mapa { border-radius: 3px; overflow: hidden; }
+
+.map-placeholder { background: white; border: 1px solid rgba(122, 59, 16, 0.1); border-radius: 3px; padding: 2.5rem 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+
+.map-placeholder-inner { max-width: 380px; }
+
+.map-placeholder-inner h4 { font-family: Cormorant Garamond, Georgia, serif; font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.8rem; }
+
+.map-placeholder-inner p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; font-weight: 300; }
+
+.map-accept-btn { display: inline-block; padding: 0.7rem 1.6rem; background: var(--brown-dark); color: white; border: none; border-radius: 999px; font-family: DM Sans, sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0; cursor: pointer; transition: background 0.25s, transform 0.15s; }
+
+.map-accept-btn:hover { background: var(--brown); transform: translatey(-1px); }
+
+.map-links { margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 0.5rem; align-items: center; }
+
+.map-links a { color: var(--brown); text-decoration: none; font-weight: 500; }
+
+.map-links a:hover { text-decoration: underline; }
+
+.map-links span { opacity: 0.4; }
+
+.map-frame iframe { width: 100%; height: 340px; border: 0; border-radius: 3px; display: block; }
+
+.contactos-info { display: flex; flex-direction: column; gap: 0; }
+
+.contact-block { padding: 1.4rem 0; border-bottom: 1px solid rgba(122, 59, 16, 0.1); }
+
+.contact-block:first-child { padding-top: 0; }
+
+.contact-block:last-child { border-bottom: none; }
+
+.contactos-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0; text-transform: uppercase; color: var(--brown); margin-bottom: 0.5rem; }
+
+.contactos-valor { font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+
+.contactos-valor a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+
+.contactos-valor a:hover { color: var(--brown); }
+
+.contactos-nota { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; }
+
+.contactos-socials { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.3rem; }
+
+.contact-social-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+
+.contact-social-link:hover { color: var(--brown); }
+
+.contact-social-icon { width: 36px; height: 36px; border: 1px solid rgba(122, 59, 16, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0; transition: border-color 0.2s, background 0.2s; }
+
+.contact-social-link:hover .contact-social-icon { border-color: var(--brown); background: var(--cream-dark); }
+
+.contact-social-icon img { width: 18px; height: 18px; object-fit: contain; }
+
+.whatsapp-banner { margin-top: 3rem; background: white; border-width: 1px 1px 1px 3px; border-style: solid; border-color: rgba(122, 59, 16, 0.1) rgba(122, 59, 16, 0.1) rgba(122, 59, 16, 0.1) #25d366; border-image: none; border-radius: 3px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.2rem; }
+
+.whatsapp-banner-icon { width: 44px; height: 44px; flex-shrink: 0; }
+
+.whatsapp-banner-icon img { width: 44px; height: 44px; object-fit: contain; }
+
+.whatsapp-banner-text { }
+
+.whatsapp-banner-title { font-family: Cormorant Garamond, Georgia, serif; font-size: 1.2rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+
+.whatsapp-banner-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 300; }
+
+.whatsapp-banner-btn { margin-left: auto; flex-shrink: 0; display: inline-block; padding: 0.6rem 1.4rem; background: #25d366; color: white; text-decoration: none; border-radius: 999px; font-family: DM Sans, sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0; transition: background 0.2s, transform 0.15s; }
+
+.whatsapp-banner-btn:hover { background: #1db854; transform: translatey(-1px); }
+
+footer { background: #1e1610; color: rgba(255,255,255,0.4); text-align: center; padding: 1.4rem; font-size: 0.78rem; letter-spacing: 0; }
+
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+
+footer a:hover { color: rgba(255,255,255,0.85); }
+
+footer p + p { margin-top: 0.4rem; }
+
+.reveal { opacity: 0; transform: translatey(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
+.reveal.visible { opacity: 1; transform: translatey(0); }
+
+@media (max-width: 768px) {
+  .page-hero h1 { font-size: 2.4rem; }
+  .navbar { padding: 0.8rem 1.5rem; }
+  header.header-small .navbar { padding: 0.5rem 1.5rem; }
+  .nav-toggle { display: block; }
+  .nav-links { width: 100%; display: none; flex-direction: column; gap: 0; background: rgba(248, 244, 239, 0.98); padding: 0.8rem 0; border-top: 1px solid rgba(122, 59, 16, 0.1); margin-top: 0.5rem; }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links a { display: block; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+  .contactos-page { padding: 2.5rem 1.2rem 4rem; }
+  .contactos-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .whatsapp-banner { flex-wrap: wrap; gap: 1rem; }
+  .whatsapp-banner-btn { margin-left: 0; }
+}

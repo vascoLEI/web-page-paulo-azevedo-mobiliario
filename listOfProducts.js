@@ -1,4 +1,382 @@
 const PRODUCTS = [
+  // ---------- NOVIDADES: 9 NOVEMBRO 2026 ----------
+  {
+    id: "aparador-cerejeira-mjb",
+    nome: "Aparador em cerejeira MJB",
+    imagem: "images/novas/aparador/Aparador cerejeira MJB.jpg",
+    categoria: "aparador",
+    descricao: "Aparador em cerejeira com quatro portas e linhas arredondadas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "aparador-oval-branco-carvalho",
+    nome: "Aparador oval branco e carvalho natural",
+    imagem: "images/novas/aparador/Aparador oval branco com carvalho natural.jpg",
+    categoria: "aparador",
+    descricao: "Aparador com portas em carvalho natural e laterais brancas caneladas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "aparador-pau-ferro-branco",
+    nome: "Aparador em pau-ferro e branco",
+    imagem: "images/novas/aparador/Aparador pau ferro e branco.jpg",
+    categoria: "aparador",
+    descricao: "Aparador com estrutura em pau-ferro, frentes brancas e gavetas laterais.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "base-tv-americana",
+    nome: "Base TV americana",
+    imagem: "images/novas/base/Base TV americana.jpg",
+    categoria: "base",
+    descricao: "Base de TV com estrutura em madeira, frentes brancas e pés inclinados.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "base-tv-branca-friso-mesas",
+    nome: "Base TV branca com friso e mesas de centro",
+    imagem: "images/novas/base/Base TV branca com friso + Mesa de centro .jpg",
+    categoria: "base",
+    descricao: "Conjunto de base de TV branca e duas mesas de centro com estrutura preta.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "base-tv-carvalho-branco-led-mesas",
+    nome: "Base TV em carvalho e branco com LED",
+    imagem: "images/novas/base/Base TV carvalho natural e branco com led + Mesa de centro .jpg",
+    categoria: "base",
+    descricao: "Base de TV em carvalho e branco com nicho central e mesas de centro a combinar.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "base-tv-nogueira-branco-mesa",
+    nome: "Base TV e mesa de centro em nogueira e branco",
+    imagem: "images/novas/base/Base TV nogueira e branco + mesa de centro nogueira e branco.jpg",
+    categoria: "base",
+    descricao: "Conjunto em nogueira e branco com base de TV e mesa de centro geométrica.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "base-tv-oval-branco-carvalho",
+    nome: "Base TV oval branca e carvalho natural",
+    imagem: "images/novas/base/Base TV oval branco com carvalho natural.png",
+    categoria: "base",
+    descricao: "Base de TV com laterais caneladas, portas em carvalho e nicho aberto.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cadeira-01-frente",
+    nome: "Cadeira - vista frontal",
+    imagem: "images/novas/cadeiras/Cadeira 01 frente.jpg",
+    categoria: "cadeira",
+    descricao: "Cadeira estofada com encosto arredondado e estrutura em madeira natural.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cadeirao-02-perna-conica",
+    nome: "Cadeirão com perna cónica",
+    imagem: "images/novas/cadeiras/Cadeirão 02 perna cónica.jpg",
+    categoria: "cadeira",
+    descricao: "Cadeirão estofado com braços envolventes e pés cónicos em madeira.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cadeirao-03",
+    nome: "Cadeirão",
+    imagem: "images/novas/cadeiras/Cadeirão 03 .jpg",
+    categoria: "cadeira",
+    descricao: "Cadeirão em tecido claro com braços integrados e pés em madeira.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cadeiras-varios-modelos",
+    nome: "Cadeiras em vários modelos",
+    imagem: "images/novas/cadeiras/Cadeiras Vários modelos.jpg",
+    categoria: "cadeira",
+    descricao: "Seleção de cadeiras com diferentes formatos, tecidos e cores.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-california-visco-fresh",
+    nome: "Cama California com colchão Visco Fresh",
+    imagem: "images/novas/cama/Cama California + colchão Visco Fresh.jpg",
+    categoria: "quarto",
+    descricao: "Cama estofada com cabeceira canelada e detalhes dourados, com colchão Visco Fresh.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-charlotte-classi-roll",
+    nome: "Cama Charlotte com colchão Classi Roll",
+    imagem: "images/novas/cama/Cama Charlotte + Colchão Classi roll.jpg",
+    categoria: "quarto",
+    descricao: "Cama em tecido cinzento com cabeceira capitoné e colchão Classi Roll.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-denver-levit",
+    nome: "Cama Denver com colchão Levit",
+    imagem: "images/novas/cama/Cama Denver + colchão Levit.jpg",
+    categoria: "quarto",
+    descricao: "Cama estofada em cinzento com apontamentos dourados e colchão Levit.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-merida-top-luxury",
+    nome: "Cama Mérida bege com colchão Top Luxury",
+    imagem: "images/novas/cama/Cama Mérida bege + Colchão Top Luxury.jpg",
+    categoria: "quarto",
+    descricao: "Cama bege com cabeceira de painéis inclinados e colchão Top Luxury.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-montana-orthopedic",
+    nome: "Cama Montana com colchão Orthopedic",
+    imagem: "images/novas/cama/Cama Montana + Colchão Ortophedic.jpg",
+    categoria: "quarto",
+    descricao: "Cama estofada com cabeceira capitoné e colchão Orthopedic.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-mesinhas-suspensas-nogueira",
+    nome: "Cama com mesinhas suspensas em nogueira",
+    imagem: "images/novas/cama/Cama Outubro2026 frent cama nogueiraII.jpeg",
+    categoria: "quarto",
+    descricao: "Cama estofada com cabeceira ampla e mesinhas suspensas em nogueira.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesinha-suspensa-nogueira",
+    nome: "Mesinha suspensa em nogueira",
+    imagem: "images/novas/cama/Cama Outubro2026 mesinha suspensa nogueira.jpeg",
+    categoria: "quarto",
+    descricao: "Detalhe da mesinha suspensa em nogueira, integrada na cabeceira estofada.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "cama-praga-georgia",
+    nome: "Cama Praga com colchão Georgia",
+    imagem: "images/novas/cama/Cama Praga + Colchão Georgia.jpg",
+    categoria: "quarto",
+    descricao: "Cama estofada azul com cabeceira ampla e colchão Georgia.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-classi-visco",
+    nome: "Colchão Classi Visco",
+    imagem: "images/novas/colchao/Colchão Classi Visco 26cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Classi Visco com tampo acolchoado e laterais em tom claro.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-confor-plus",
+    nome: "Colchão Confor Plus",
+    imagem: "images/novas/colchao/Colchão Confor Plus molas ensacadas.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Confor Plus de molas ensacadas, com acabamento em tecido claro.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-georgia",
+    nome: "Colchão Georgia",
+    imagem: "images/novas/colchao/Colchão Georgia 26cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Georgia com tampo branco acolchoado e laterais cinzentas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-king",
+    nome: "Colchão King",
+    imagem: "images/novas/colchao/Colchão King molas ensacadas 30cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão King de molas ensacadas, com tampo claro e laterais cinzentas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-levit",
+    nome: "Colchão Levit",
+    imagem: "images/novas/colchao/Colchão Levit molas ensacadas 33cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Levit de molas ensacadas, com tecido escuro e costuras onduladas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-orthopedic",
+    nome: "Colchão Orthopedic",
+    imagem: "images/novas/colchao/Colchão Orthopedic molas ensacadas 29cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Orthopedic de molas ensacadas, com acolchoado e costuras decorativas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-texas",
+    nome: "Colchão Texas",
+    imagem: "images/novas/colchao/Colchão Texas molas ensacadas 29cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Texas de molas ensacadas, com laterais castanhas e tampo claro.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-top-luxury",
+    nome: "Colchão Top Luxury",
+    imagem: "images/novas/colchao/Colchão Top Luxury  molas ensacadas 29cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Top Luxury de molas ensacadas, com laterais acolchoadas em losangos.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "colchao-visco-fresh",
+    nome: "Colchão Visco Fresh",
+    imagem: "images/novas/colchao/Colchão Visco Fresh molas ensacadas 30cm.jpg",
+    categoria: "colchao",
+    descricao: "Colchão Visco Fresh de molas ensacadas, com faixa lateral azul e tampo claro.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesas-centro-nogueira-par",
+    nome: "Mesas de centro com tampo em nogueira",
+    imagem: "images/novas/mesa/Mesa centro tampo nogueira par.jpeg",
+    categoria: "mesa",
+    descricao: "Par de mesas de centro redondas com tampos em nogueira e estrutura dourada.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-oval-branca-pe-central",
+    nome: "Mesa oval branca com pé central",
+    imagem: "images/novas/mesa/Mesa oval branca pé central.jpg",
+    categoria: "mesa",
+    descricao: "Mesa de jantar oval branca com pé central canelado.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-sala-branca-200x100",
+    nome: "Mesa de jantar branca",
+    imagem: "images/novas/mesa/Mesa sala branca 200x100 50+50.jpg",
+    categoria: "mesa",
+    descricao: "Mesa branca com base central curva e pormenores diagonais no tampo.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-jantar-012-castanho-natural",
+    nome: "Mesa de jantar 012 em castanho natural",
+    imagem: "images/novas/mesa/Mesa sala jantar 012 castanho natural  140x90(60)II.jpeg",
+    categoria: "mesa",
+    descricao: "Mesa de jantar retangular em tom natural, apresentada com cadeiras estofadas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-jantar-oval-branca-carvalho",
+    nome: "Mesa oval branca e carvalho natural",
+    imagem: "images/novas/mesa/Mesa sala jantar oval branca com carvalho natural.jpg",
+    categoria: "mesa",
+    descricao: "Mesa oval com tampo branco, rebordo em carvalho e apoios canelados.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-redonda-150",
+    nome: "Mesa de jantar redonda branca",
+    imagem: "images/novas/mesa/Mesa sala redonda 150.jpg",
+    categoria: "mesa",
+    descricao: "Mesa redonda branca com base central cónica e acabamento canelado.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-redonda-carvalho",
+    nome: "Mesa redonda em carvalho",
+    imagem: "images/novas/mesa/Mesa sala redonda carvalho.jpg",
+    categoria: "mesa",
+    descricao: "Mesa de jantar redonda em carvalho com pé central e cadeiras em tecido claro.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesa-redonda-tampo-vidro",
+    nome: "Mesa redonda com tampo em vidro",
+    imagem: "images/novas/mesa/Mesa sala redonda tampo vidro .jpg",
+    categoria: "mesa",
+    descricao: "Mesa redonda com tampo transparente e base geométrica em madeira.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesas-centro-par-pernas-douradas",
+    nome: "Mesas de centro com pernas douradas",
+    imagem: "images/novas/mesa/Mesas centro par pernas douradas.jpg",
+    categoria: "mesa",
+    descricao: "Par de mesas redondas com tampos de efeito mármore e bases douradas curvas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "mesas-centro-redondas-dourado-branco",
+    nome: "Mesas de centro redondas em dourado e branco",
+    imagem: "images/novas/mesa/Mesas centro redondas dour_br.jpg",
+    categoria: "mesa",
+    descricao: "Duas mesas de centro com tampos claros e estruturas geométricas douradas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-branco-cinza",
+    nome: "Quarto branco e cinzento",
+    imagem: "images/novas/quarto/Quarto branco com cinza.jpg",
+    categoria: "quarto",
+    descricao: "Conjunto de quarto branco com pormenores geométricos em cinzento.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-branco-barras-douradas",
+    nome: "Quarto com barras douradas",
+    imagem: "images/novas/quarto/Quarto casal branco com barras douradas.jpg",
+    categoria: "quarto",
+    descricao: "Quarto com cama estofada bege e móveis brancos com barras douradas.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-branco-pormenores-dourados",
+    nome: "Quarto branco com pormenores dourados",
+    imagem: "images/novas/quarto/Quarto casal branco com pormenores em dourado.jpg",
+    categoria: "quarto",
+    descricao: "Conjunto de quarto com cabeceira estofada e apontamentos verticais dourados.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-cantos-redondos-branco-dourado",
+    nome: "Quarto de cantos redondos em branco e dourado",
+    imagem: "images/novas/quarto/Quarto casal cantos redondos branco e dourado.jpg",
+    categoria: "quarto",
+    descricao: "Quarto com móveis de cantos arredondados, frentes brancas e contornos dourados.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-carvalho-natural",
+    nome: "Quarto em carvalho natural",
+    imagem: "images/novas/quarto/Quarto casal em carvalho natural .jpg",
+    categoria: "quarto",
+    descricao: "Cama estofada com moldura e mesinhas em carvalho natural.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-onda-carvalho-branco",
+    nome: "Quarto Onda em carvalho e branco",
+    imagem: "images/novas/quarto/Quarto onda carvalho natural e branco.jpg",
+    categoria: "quarto",
+    descricao: "Conjunto de quarto em carvalho natural e branco com pormenores ondulados.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-toronto-bege",
+    nome: "Quarto Toronto bege",
+    imagem: "images/novas/quarto/Quarto Toronto_bege.png",
+    categoria: "quarto",
+    descricao: "Quarto Toronto em bege com cabeceira geométrica e pormenores dourados.",
+    adicionadoEm: "2026-11-09"
+  },
+  {
+    id: "quarto-toronto-branco",
+    nome: "Quarto Toronto branco",
+    imagem: "images/novas/quarto/Quarto Toronto_branco.png",
+    categoria: "quarto",
+    descricao: "Quarto Toronto branco com linhas geométricas e apontamentos prateados.",
+    adicionadoEm: "2026-11-09"
+  },
+
   // ---------- APARADORES ----------
   {
     id: "aparador-1",
@@ -381,4 +759,4 @@ const PRODUCTS = [
   categoria: "base",
   descricao: "Base TV"
 },
-];
+].sort((a, b) => (b.adicionadoEm || "").localeCompare(a.adicionadoEm || ""));

@@ -8,582 +8,43 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logoicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --brown: #7a3b10;
-      --brown-light: #a0521a;
-      --brown-dark: #4e2509;
-      --cream: #f8f4ef;
-      --cream-dark: #ede7de;
-      --warm-gray: #888078;
-      --text: #2a1f17;
-      --text-muted: #7a6e66;
-      --white: #fff;
-    }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--cream);
-      color: var(--text);
-      font-family: 'DM Sans', Arial, sans-serif;
-      padding-top: 0;
-    }
-
-    body.lightbox-open { overflow: hidden; }
-    body.lightbox-open header { display: none; }
-
-    /* ── HEADER ── */
-    header {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      z-index: 1000;
-      background: transparent;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    header.header-small {
-      background: rgba(248, 244, 239, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 rgba(122, 59, 16, 0.08);
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.6rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: padding 0.35s ease;
-    }
-
-    header.header-small .navbar { padding: 0.8rem 2.5rem; }
-
-    .logo { margin: 0; }
-    .logo a { display: inline-block; }
-
-    .logo-img {
-      height: 58px;
-      width: auto;
-      display: block;
-      transition: height 0.35s ease;
-      filter: brightness(0) invert(1);
-    }
-
-    header.header-small .logo-img {
-      height: 42px;
-      filter: none;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.92);
-      text-decoration: none;
-      position: relative;
-      transition: color 0.25s;
-    }
-
-    header.header-small .nav-links a { color: var(--text); }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0; bottom: -4px;
-      width: 0; height: 1px;
-      background: var(--brown);
-      transition: width 0.4s ease;
-    }
-
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: white;
-      transition: color 0.3s;
-    }
-
-    header.header-small .nav-toggle { color: var(--text); }
-
-    /* ── HERO ── */
-    .hero {
-      height: 100vh;
-      min-height: 600px;
-      background-image: url("images/antigas/frente-com-luzes.jpg");
-      background-size: cover;
-      background-position: center 95%;
-      background-attachment: fixed;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(20,10,5,0.35) 0%,
-        rgba(20,10,5,0.55) 60%,
-        rgba(20,10,5,0.75) 100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      text-align: center;
-      color: white;
-      padding: 2rem;
-      max-width: 700px;
-    }
-
-    .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 1.4rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.2s ease forwards;
-    }
-
-    .hero-content h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.45s ease forwards;
-    }
-
-    .hero-content p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 0.04em;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.65s ease forwards;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      border: 1px solid rgba(255,255,255,0.6);
-      color: white;
-      text-decoration: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: background 0.3s, border-color 0.3s, color 0.3s;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.85s ease forwards;
-    }
-
-    .hero-cta:hover {
-      background: rgba(255,255,255,0.15);
-      border-color: white;
-    }
-
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(255,255,255,0.45);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-family: 'DM Sans', sans-serif;
-      opacity: 0;
-      animation: fadeUp 1s 1.2s ease forwards;
-    }
-
-    .hero-scroll-hint::after {
-      content: "";
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-      animation: scrollLine 1.8s ease-in-out infinite;
-    }
-
-    @keyframes scrollLine {
-      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-      51% { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .intro-strip {
-      background: var(--brown-dark);
-      color: rgba(255,255,255,0.82);
-      padding: 1.2rem 2rem;
-      text-align: center;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .intro-strip span { opacity: 0.4; font-size: 0.6rem; }
-
-    .galeria {
-      padding: 5rem 2rem;
-      text-align: center;
-      background: var(--cream);
-    }
-
-    .galeria-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--brown);
-      margin-bottom: 0.8rem;
-    }
-
-    .galeria h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      line-height: 1.15;
-    }
-
-    .galeria-subtitle {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 3rem;
-      font-weight: 300;
-    }
-
-    .produtos-carousel {
-      max-width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .produtos-track {
-      display: flex;
-      gap: 1.5rem;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .produto {
-      flex: 0 0 calc(100% / 3);
-      position: relative;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-
-    .produto::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(20,10,5,0);
-      transition: background 0.4s ease;
-    }
-
-    .produto:hover::after {
-      background: rgba(20,10,5,0.12);
-    }
-
-    .produto img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: pointer;
-    }
-
-    .produto:hover img { transform: scale(1.04); }
-
-    /* ── FEATURES STRIP ── */
-    .features {
-      background: var(--cream-dark);
-      padding: 4rem 2rem;
-    }
-
-    .features-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      text-align: center;
-    }
-
-    .feature-item {}
-
-    .feature-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      color: var(--brown);
-      display: block;
-    }
-
-    .feature-item h4 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-item p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    /* ── FOOTER CONTACT ── */
-    .footer-contact {
-      background: #2e2520;
-      color: rgba(255,255,255,0.8);
-      padding: 4rem 2rem 3rem;
-    }
-
-    .footer-contact-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 3rem;
-    }
-
-    .footer-col h4 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-col p {
-      margin-bottom: 0.7rem;
-      line-height: 1.6;
-      font-size: 0.9rem;
-    }
-
-    .footer-col a {
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover { color: white; }
-
-    .contact-note {
-      font-size: 0.76rem;
-      opacity: 0.55;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      margin-top: 0.5rem;
-    }
-
-    .footer-socials a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50%;
-      transition: border-color 0.25s, background 0.25s;
-    }
-
-    .footer-socials a:hover {
-      border-color: rgba(255,255,255,0.5);
-      background: rgba(255,255,255,0.07);
-    }
-
-    .footer-socials img {
-      width: 20px;
-      height: 20px;
-      filter: brightness(0) invert(1);
-      opacity: 0.75;
-      transition: opacity 0.2s;
-    }
-
-    .footer-socials a:hover img { opacity: 1; }
-
-    /* ── FOOTER BAR ── */
-    footer {
-      background: #1e1610;
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-      padding: 1.4rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.03em;
-    }
-
-    footer a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover { color: rgba(255,255,255,0.85); }
-
-    footer p + p { margin-top: 0.4rem; }
-
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      inset: 0;
-      background: rgba(10,5,2,0.92);
-      justify-content: center;
-      align-items: center;
-      cursor: zoom-out;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90vh;
-      border-radius: 2px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    }
-
-    /* ── REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      body { padding-top: 0; }
-
-      .navbar {
-        flex-wrap: wrap;
-        padding: 1.2rem 1.5rem;
-      }
-
-      header.header-small .navbar { padding: 0.8rem 1.5rem; }
-
-      .nav-toggle { display: block; }
-
-      .nav-links {
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        background: rgba(248,244,239,0.97);
-        backdrop-filter: blur(12px);
-        padding: 1rem 0;
-        border-top: 1px solid rgba(122,59,16,0.1);
-        margin-top: 0.5rem;
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links li { width: 100%; text-align: center; }
-
-      .nav-links a {
-        display: block;
-        padding: 0.8rem 1.5rem;
-        color: var(--text);
-        font-size: 0.9rem;
-      }
-
-      header.header-small .nav-links a { color: var(--text); }
-
-      .hero { background-attachment: scroll; background-position: center 40%; }
-
-      .produto { flex: 0 0 100%; }
-      .produto img { height: 280px; }
-
-      .features-inner {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .intro-strip { gap: 1rem; font-size: 0.75rem; }
-    }
-  </style>
+<link media="all" data-view-style="inicio" href="spa/inicio.css" rel="stylesheet">
+<link media="not all" data-view-style="produtos" href="spa/produtos.css" rel="stylesheet">
+<link media="not all" data-view-style="sobre" href="spa/sobre.css" rel="stylesheet">
+<link media="not all" data-view-style="contactos" href="spa/contactos.css" rel="stylesheet">
+<link href="app.css" rel="stylesheet">
+<script defer src="listOfProducts.js"></script>
+<script defer src="app.js"></script>
 </head>
 
-<body>
-  <header>
+<body data-view="inicio"><header>
     <nav class="navbar">
-      <h1 class="logo">
-        <a href="index.html">
+      <div class="logo">
+        <a data-nav="inicio" href="#/inicio">
           <img src="images/Logo.png" alt="Paulo Azevedo Mobiliário" class="logo-img">
         </a>
-      </h1>
-      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="products.html">Produtos</a></li>
-        <li><a href="about.html">Sobre nós</a></li>
-        <li><a href="contacts.html">Contactos</a></li>
+      </div>
+      <button aria-expanded="false" aria-controls="site-navigation" type="button" class="nav-toggle" aria-label="Abrir menu">☰</button>
+      <ul id="site-navigation" class="nav-links">
+        <li><a data-nav="produtos" href="#/produtos">Produtos</a></li>
+        <li><a data-nav="sobre" href="#/sobre">Sobre nós</a></li>
+        <li><a data-nav="contactos" href="#/contactos">Contactos</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
+<main tabindex="-1" id="app-view"><section class="hero">
+    <div class="hero-content"><h1 class="sr-only">Paulo Azevedo Mobiliário</h1>
       <p class="hero-eyebrow">Póvoa de Varzim</p>
       <p>Soluções por medida para a sua casa</p>
-      <a href="products.html" class="hero-cta">Ver produtos</a>
+      <a href="#/produtos" class="hero-cta">Ver produtos</a>
     </div>
   </section>
 
-  <div class="intro-strip">
+<div class="intro-strip">
     <span>Mobiliário</span>
     <span>◆</span>
     <span>Estofos por medida</span>
@@ -597,7 +58,7 @@
     <span>Orçamentos gratuitos</span>
   </div>
 
-  <section id="produtos" class="galeria">
+<section id="produtos" class="galeria">
     <p class="galeria-label reveal">Os nossos produtos</p>
     <h3 class="reveal">Peças que transformam<br>a sua casa</h3>
     <p class="galeria-subtitle reveal">Visite a loja para ver todas as opções disponíveis.</p>
@@ -605,28 +66,28 @@
     <div class="produtos-carousel reveal">
       <div class="produtos-track">
         <div class="produto">
-          <img src="images/antigas/espelho redondo2.jpg" alt="Espelho redondo" class="galeria-img" onclick="openLightbox(this)">
+          <button aria-label="Ampliar Cama com mesinhas suspensas em nogueira" data-lightbox="images/novas/cama/Cama Outubro2026 frent cama nogueiraII.jpeg" class="gallery-button" type="button"><img src="images/novas/cama/Cama Outubro2026 frent cama nogueiraII.jpeg" alt="Cama com mesinhas suspensas em nogueira" class="galeria-img"></button>
         </div>
         <div class="produto">
-          <img src="images/antigas/sofá com arrumação.jpg" alt="Sofá com arrumação" class="galeria-img" onclick="openLightbox(this)">
+          <button aria-label="Ampliar Quarto Toronto branco" data-lightbox="images/novas/quarto/Quarto Toronto_branco.png" class="gallery-button" type="button"><img src="images/novas/quarto/Quarto Toronto_branco.png" alt="Quarto Toronto branco" class="galeria-img"></button>
         </div>
         <div class="produto">
-          <img src="images/antigas/sala Resultado.jpg" alt="Sala" class="galeria-img" onclick="openLightbox(this)">
+          <button aria-label="Ampliar Aparador oval branco e carvalho natural" data-lightbox="images/novas/aparador/Aparador oval branco com carvalho natural.jpg" class="gallery-button" type="button"><img src="images/novas/aparador/Aparador oval branco com carvalho natural.jpg" alt="Aparador oval branco e carvalho natural" class="galeria-img"></button>
         </div>
         <div class="produto">
-          <img src="images/antigas/sofa cama resultado.jpg" alt="Sofá cama" class="galeria-img" onclick="openLightbox(this)">
+          <button aria-label="Ampliar Base TV oval branca e carvalho natural" data-lightbox="images/novas/base/Base TV oval branco com carvalho natural.png" class="gallery-button" type="button"><img src="images/novas/base/Base TV oval branco com carvalho natural.png" alt="Base TV oval branca e carvalho natural" class="galeria-img"></button>
         </div>
         <div class="produto">
-          <img src="images/antigas/sofa Resultado (2).jpg" alt="Sofá" class="galeria-img" onclick="openLightbox(this)">
+          <button aria-label="Ampliar Mesa redonda com tampo em vidro" data-lightbox="images/novas/mesa/Mesa sala redonda tampo vidro .jpg" class="gallery-button" type="button"><img src="images/novas/mesa/Mesa sala redonda tampo vidro .jpg" alt="Mesa redonda com tampo em vidro" class="galeria-img"></button>
         </div>
         <div class="produto">
-          <img src="images/antigas/sofa resultado (3).jpg" alt="Sofá" class="galeria-img" onclick="openLightbox(this)">
+          <button aria-label="Ampliar Mesas de centro com pernas douradas" data-lightbox="images/novas/mesa/Mesas centro par pernas douradas.jpg" class="gallery-button" type="button"><img src="images/novas/mesa/Mesas centro par pernas douradas.jpg" alt="Mesas de centro com pernas douradas" class="galeria-img"></button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="features">
+<section class="features">
     <div class="features-inner">
       <div class="feature-item reveal">
         <span class="feature-icon">✦</span>
@@ -646,7 +107,7 @@
     </div>
   </section>
 
-  <section class="footer-contact">
+<section class="footer-contact">
     <div class="footer-contact-inner">
       <div class="footer-col">
         <h4>Contactos</h4>
@@ -660,108 +121,351 @@
       <div class="footer-col">
         <h4>Redes sociais</h4>
         <div class="footer-socials">
-          <a href="https://www.facebook.com/pauloazevedomobiliario/" target="_blank" aria-label="Facebook">
+          <a rel="noopener noreferrer" href="https://www.facebook.com/pauloazevedomobiliario/" target="_blank" aria-label="Facebook">
             <img src="images/facebook.webp" alt="Facebook">
           </a>
-          <a href="https://www.instagram.com/paulo.azevedo.758/" target="_blank" aria-label="Instagram">
+          <a rel="noopener noreferrer" href="https://www.instagram.com/paulo.azevedo.758/" target="_blank" aria-label="Instagram">
             <img src="images/Instagram.svg" alt="Instagram">
           </a>
-          <a href="https://wa.me/351915373158" target="_blank" aria-label="WhatsApp">
+          <a rel="noopener noreferrer" href="https://wa.me/351915373158" target="_blank" aria-label="WhatsApp">
             <img src="images/WhatsApp.png" alt="WhatsApp">
           </a>
         </div>
       </div>
     </div>
-  </section>
+  </section></main>
 
-  <footer>
-    <p>&copy; 2025 Paulo Azevedo Mobiliário</p>
+<footer>
+    <p>© 2025 Paulo Azevedo Mobiliário</p>
     <p>
-      <a href="privacidade.html">Política de Privacidade</a> &nbsp;|&nbsp;
-      <a href="cookies.html">Política de Cookies</a>
+      <a href="#/privacidade">Política de Privacidade</a> &#160;|&#160;
+      <a href="#/cookies">Política de Cookies</a>
     </p>
   </footer>
 
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Imagem ampliada do produto">
+<div aria-label="Imagem ampliada do produto" aria-modal="true" role="dialog" hidden class="lightbox" id="lightbox"><button type="button" class="lightbox-close" aria-label="Fechar imagem">×</button><img alt="Imagem ampliada do produto"></div>
+
+<template id="view-produtos"><div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Paulo Azevedo Mobiliário</p>
+      <h1>Os nossos produtos</h1>
+    </div>
   </div>
 
-  <script>
-    function openLightbox(img) {
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox').style.display = 'flex';
-      document.body.classList.add('lightbox-open');
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-      document.getElementById('lightbox-img').src = '';
-      document.body.classList.remove('lightbox-open');
-    }
-  </script>
+<div class="filtros-wrapper">
+    <div class="filtros">
+      <button aria-pressed="true" type="button" class="filtro-btn active" data-filter="all">Todos</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="quarto">Quartos</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="colchao">Colchões</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="aparador">Aparadores</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="base">Bases TV</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="sofa">Sofás</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="cadeira">Cadeiras</button>
+      <button aria-pressed="false" type="button" class="filtro-btn" data-filter="mesa">Mesas</button>
+    </div>
+  </div>
 
-  <script>
-    const header = document.querySelector('header');
-    function updateHeader() {
-      if (window.scrollY > 80) {
-        header.classList.add('header-small');
-      } else {
-        header.classList.remove('header-small');
-      }
-    }
-    window.addEventListener('scroll', updateHeader);
-    window.addEventListener('load', updateHeader);
-  </script>
+<section class="produtos-page">
+    <div class="produtos-grid-page" id="produtos-grid"></div>
+  </section></template><template id="view-sobre"><div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Paulo Azevedo Mobiliário</p>
+      <h1>Sobre nós</h1>
+      <p>Mais de 30 anos a tornar as casas mais bonitas.</p>
+    </div>
+  </div>
 
-  <script>
-    const track = document.querySelector('.produtos-track');
-    const slides = Array.from(track.children);
-    const visibleDesktop = 3;
-    let visible = 3, currentIndex = 0, slideStep = 0;
+<section class="sobre-page">
 
-    function recalculateSlider() {
-      const isMobile = window.innerWidth <= 768;
-      visible = isMobile ? 1 : visibleDesktop;
-      const gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || 0);
-      slideStep = slides[0].getBoundingClientRect().width + gap;
-      if (currentIndex > slides.length - visible) currentIndex = Math.max(slides.length - visible, 0);
-      updateSliderPosition();
-    }
+    <div class="sobre-intro reveal">
+      <div class="sobre-imagem">
+        <img src="images/antigas/loja de lado.jpg" alt="Interior da loja Paulo Azevedo Mobiliário">
+      </div>
 
-    function updateSliderPosition() {
-      track.style.transform = `translateX(-${currentIndex * slideStep}px)`;
-    }
+      <div class="sobre-texto">
+        <p class="sobre-eyebrow">A nossa história</p>
+        <h2>Uma loja feita de dedicação e atenção ao detalhe</h2>
+        <p>
+          Somos uma empresa sediada na cidade da Póvoa de Varzim, onde comercializamos todo o tipo de
+          mobiliário, estofos, colchões, estrados, cozinhas e roupeiros. Fazemos orçamentos gratuitos
+          de todo o tipo de mobiliário por medida.
+        </p>
+        <p>
+          Acreditamos que cada cliente merece uma solução pensada à sua medida. Trabalhamos sempre de
+          forma próxima e personalizada, ouvindo com atenção cada pedido para encontrar exatamente
+          aquilo que melhor satisfaz as suas necessidades.
+        </p>
+        <p>
+          <em>Aqui, cada detalhe conta. E é por isso que continuamos a tornar as casas cada vez mais bonitas.</em>
+        </p>
+      </div>
+    </div>
 
-    function goToNextSlide() {
-      if (slides.length <= visible) return;
-      currentIndex++;
-      if (currentIndex > slides.length - visible) currentIndex = 0;
-      updateSliderPosition();
-    }
+    <div class="stats-strip reveal">
+      <div class="stat-item">
+        <p class="stat-number">30<span style="font-size:1.8rem">+</span></p>
+        <p class="stat-label">Anos de experiência</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number">100%</p>
+        <p class="stat-label">Por medida</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-number" style="font-size:1.9rem; line-height:1.25;">Entrega e montagem dos móveis</p>
+      </div>
+    </div>
 
-    window.addEventListener('load', () => {
-      recalculateSlider();
-      setInterval(goToNextSlide, 3500);
-    });
-    window.addEventListener('resize', recalculateSlider);
-  </script>
+    <div class="valores-section reveal">
+      <p class="section-eyebrow">O nosso compromisso</p>
+      <h3>O que nos define</h3>
+      <div class="valores-grid">
+        <div class="valor-card">
+          <p class="valor-number">01</p>
+          <h4>Personalização</h4>
+          <p>Cada projeto é único. Trabalhamos de perto com cada cliente para criar soluções que se adaptam ao seu espaço e gosto pessoal.</p>
+        </div>
+        <div class="valor-card">
+          <p class="valor-number">02</p>
+          <h4>Qualidade</h4>
+          <p>Selecionamos materiais e fornecedores com critério, garantindo que cada peça tem a durabilidade e o acabamento que merece.</p>
+        </div>
+        <div class="valor-card">
+          <p class="valor-number">03</p>
+          <h4>Proximidade</h4>
+          <p>Acompanhamos o cliente em todas as etapas — da escolha à entrega — para que o resultado final supere as expectativas.</p>
+        </div>
+      </div>
+    </div>
 
-  <script>
-    function setupMobileMenu() {
-      const toggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      if (!toggle || !navLinks) return;
-      toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    }
-    window.addEventListener('load', setupMobileMenu);
-  </script>
+    <div class="cta-band reveal">
+      <div class="cta-band-text">
+        <h3>Pronto para transformar a sua casa?</h3>
+        <p>Visite-nos ou contacte-nos.</p>
+      </div>
+      <a href="#/contactos" class="cta-band-btn">Falar connosco</a>
+    </div>
 
-  <script>
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
-  </script>
+  </section></template><template id="view-contactos"><div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Paulo Azevedo Mobiliário</p>
+      <h1>Contactos</h1>
+      <p>Estamos disponíveis para o ajudar.</p>
+    </div>
+  </div>
 
-</body>
+<section class="contactos-page">
+    <div class="contactos-grid reveal">
+
+      <div class="contactos-mapa">
+        <div id="map-consent" class="map-placeholder">
+          <div class="map-placeholder-inner">
+            <h4>Mapa da loja</h4>
+            <p>Para proteger a sua privacidade, o Google Maps só é carregado após consentimento, pois pode utilizar cookies de terceiros.</p>
+            <button data-accept-map="" type="button" class="map-accept-btn">Aceito, ver o mapa</button>
+            <div class="map-links">
+              <a href="#/cookies">Política de Cookies</a>
+              <span>•</span>
+              <a href="#/privacidade">Política de Privacidade</a>
+            </div>
+          </div>
+        </div>
+        <div hidden id="map-container" class="map-frame"></div>
+      </div>
+
+      <div class="contactos-info">
+        <div class="contact-block">
+          <p class="contactos-label">Morada</p>
+          <p class="contactos-valor">
+            Rua Almirante Reis, 5<br>
+            4490-463 Póvoa de Varzim
+          </p>
+        </div>
+
+        <div class="contact-block">
+          <p class="contactos-label">Telefone</p>
+          <p class="contactos-valor">
+            <a href="tel:351915373158">915 373 158</a><br>
+            <span class="contactos-nota">Chamada para a rede móvel nacional</span>
+          </p>
+        </div>
+
+        <div class="contact-block">
+          <p class="contactos-label">E-mail</p>
+          <p class="contactos-valor">
+            <a href="mailto:pauloazevedomobiliario@gmail.com">pauloazevedomobiliario@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="contact-block">
+          <p class="contactos-label">Redes sociais</p>
+          <div class="contactos-socials">
+            <a rel="noopener noreferrer" href="https://www.instagram.com/paulo.azevedo.758/" target="_blank" class="contact-social-link">
+              <span class="contact-social-icon"><img src="images/Instagram.svg" alt="Instagram"></span>
+              <span>@paulo.azevedo.758</span>
+            </a>
+            <a rel="noopener noreferrer" href="https://www.facebook.com/pauloazevedomobiliario/" target="_blank" class="contact-social-link">
+              <span class="contact-social-icon"><img src="images/facebook.webp" alt="Facebook"></span>
+              <span>/pauloazevedomobiliario</span>
+            </a>
+            <a rel="noopener noreferrer" href="https://wa.me/351915373158" target="_blank" class="contact-social-link">
+              <span class="contact-social-icon"><img src="images/WhatsApp.png" alt="WhatsApp"></span>
+              <span>WhatsApp: 915 373 158</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section></template><template id="view-privacidade"><section class="sobre-page">
+    <section class="sobre-layout" style="grid-template-columns: 1fr;">
+      <div class="sobre-texto">
+        <h2>Política de Privacidade</h2>
+
+        <p><strong>Última atualização:</strong> 2 de janeiro de 2026</p>
+
+        <h3>1. Enquadramento</h3>
+        <p>
+          O site <strong>Paulo Azevedo Mobiliário</strong> tem caráter informativo.
+          Respeitamos a privacidade dos utilizadores e procuramos cumprir o Regulamento Geral sobre a Proteção de Dados (RGPD).
+        </p>
+
+        <h3>2. Dados pessoais recolhidos</h3>
+        <p>
+          Este site <strong>não recolhe dados pessoais automaticamente</strong> (não tem formulários, área de cliente, nem newsletter).
+          Ainda assim, poderá contactar-nos por meios externos disponibilizados no site (telefone, email ou WhatsApp).
+          Nesse caso, os dados que decidir partilhar serão tratados apenas para responder ao seu pedido.
+        </p>
+
+        <h3>3. Contactos disponibilizados no site</h3>
+        <p>
+          No site são disponibilizados contactos (telefone, email e WhatsApp). Ao utilizar esses meios, o utilizador
+          está a comunicar diretamente com a loja. O tratamento de dados resultante dessa comunicação destina-se apenas
+          a prestar informação, responder a pedidos e/ou gerir contactos comerciais.
+        </p>
+
+        <h3>4. Ligações para plataformas de terceiros</h3>
+        <p>
+          O site pode incluir ligações (links) para plataformas de terceiros, como <strong>WhatsApp</strong>, <strong>Instagram</strong> e <strong>Facebook</strong>.
+          Ao clicar nessas ligações, o utilizador será redirecionado para sites/serviços externos, sujeitos às respetivas
+          políticas de privacidade e termos de utilização. O presente site não controla os dados recolhidos por esses terceiros.
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+              Política de Privacidade do WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener noreferrer">
+              Política de Privacidade do Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer">
+              Política de Privacidade do Facebook
+            </a>
+          </li>
+        </ul>
+
+        <h3>5. Google Maps</h3>
+        <p>
+          O site disponibiliza um mapa através do serviço <strong>Google Maps</strong>. Por motivos de privacidade,
+          o mapa só é carregado após o utilizador dar consentimento (quando aplicável). O Google pode recolher dados técnicos
+          (por exemplo, endereço IP e informações do navegador/dispositivo) de acordo com a sua política.
+        </p>
+
+        <p>
+          Mais informações:
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+            Política de Privacidade da Google
+          </a>
+        </p>
+
+        <h3>6. Conservação de dados</h3>
+        <p>
+          Como regra, este site não conserva dados pessoais por via do próprio website.
+          Se o utilizador contactar a loja por email/telefone/WhatsApp, os dados serão conservados apenas pelo tempo necessário
+          para responder ao pedido e cumprir obrigações legais aplicáveis.
+        </p>
+
+        <h3>7. Direitos do utilizador</h3>
+        <p>
+          Nos termos do RGPD, o utilizador poderá solicitar informação, retificação ou eliminação de dados pessoais que tenha fornecido
+          no âmbito de comunicações com a loja, bem como outros direitos aplicáveis (consoante o caso).
+        </p>
+
+        <h3>8. Contacto</h3>
+        <p>
+          Para questões relacionadas com privacidade, pode contactar-nos através do email:
+          <a href="mailto:pauloazevedomobiliario@gmail.com">pauloazevedomobiliario@gmail.com</a>
+        </p>
+
+        <p style="margin-top: 1.2rem;">
+          Consulte também a nossa <a href="#/cookies">Política de Cookies</a>.
+        </p>
+      </div>
+    </section>
+  </section></template><template id="view-cookies"><section class="sobre-page">
+    <section class="sobre-layout" style="grid-template-columns: 1fr;">
+      <div class="sobre-texto">
+        <h2>Política de Cookies</h2>
+
+        <p><strong>Última atualização:</strong> 2 de janeiro de 2026</p>
+
+        <h3>1. O que são cookies?</h3>
+        <p>
+          Cookies são pequenos ficheiros armazenados no dispositivo do utilizador que podem ser utilizados
+          para garantir o funcionamento de certas funcionalidades, memorizar preferências e/ou recolher estatísticas.
+        </p>
+
+        <h3>2. Cookies neste site</h3>
+        <p>
+          Este site <strong>não utiliza cookies próprios</strong> para fins de publicidade, personalização avançada ou análise.
+        </p>
+
+        <h3>3. Cookies de terceiros (Google Maps)</h3>
+        <p>
+          O site disponibiliza um mapa através do <strong>Google Maps</strong>. Ao carregar o mapa, poderão ser utilizados
+          cookies e tecnologias semelhantes do Google (terceiros), bem como recolhidos dados técnicos (por exemplo, endereço IP).
+        </p>
+
+        <p>
+          Por motivos de privacidade, o mapa só é carregado após o utilizador dar consentimento explícito (quando aplicável),
+          através do botão “Aceitar e ver mapa”.
+        </p>
+
+        <p>
+          Mais informações sobre cookies da Google:
+          <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer">
+            https://policies.google.com/technologies/cookies
+          </a>
+        </p>
+
+        <h3>4. Ligações para redes sociais e WhatsApp</h3>
+        <p>
+          Este site pode incluir ligações (links) para WhatsApp, Instagram e Facebook.
+          Ao clicar nessas ligações, o utilizador será redirecionado para plataformas externas, que podem utilizar cookies
+          e outras tecnologias de acordo com as suas próprias políticas.
+        </p>
+
+        <h3>5. Como gerir cookies</h3>
+        <p>
+          O utilizador pode configurar o seu navegador para bloquear ou eliminar cookies. Note que, ao bloquear cookies de terceiros,
+          algumas funcionalidades externas (como o mapa) podem não funcionar.
+        </p>
+
+        <h3>6. Contacto</h3>
+        <p>
+          Para questões relacionadas com cookies e privacidade, pode contactar-nos através do email:
+          <a href="mailto:pauloazevedomobiliario@gmail.com">pauloazevedomobiliario@gmail.com</a>
+        </p>
+
+        <p style="margin-top: 1.2rem;">
+          Consulte também a nossa <a href="#/privacidade">Política de Privacidade</a>.
+        </p>
+      </div>
+    </section>
+  </section></template></body>
 </html>
