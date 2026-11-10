@@ -1,4 +1,4 @@
-const PRODUCTS = [
+const EXISTING_PRODUCTS = [
   // ---------- NOVIDADES: 9 NOVEMBRO 2026 ----------
   {
     id: "aparador-cerejeira-mjb",
@@ -760,3 +760,125 @@ const PRODUCTS = [
   descricao: "Base TV"
 },
 ].sort((a, b) => (b.adicionadoEm || "").localeCompare(a.adicionadoEm || ""));
+
+const HALL_PRODUCTS = [
+  {
+    id: "hall-consola-tres-argolas",
+    nome: "Consola branca com três argolas douradas",
+    imagem: "images/novas/Hall de Entrada/Consola branca brilhante com 3 argolas douradas.jpg",
+    categoria: "hall",
+    descricao: "Consola branca brilhante com base de três argolas douradas entrelaçadas.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-duas-gavetas-dourada",
+    nome: "Consola branca de duas gavetas com pernas douradas",
+    imagem: "images/novas/Hall de Entrada/Consola branca com 2 gavetas e pernas douradas 120x90x35.jpg",
+    categoria: "hall",
+    descricao: "Consola branca de duas gavetas com apoios metálicos dourados de linhas paralelas.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-dourada-simples",
+    nome: "Consola branca com pernas douradas simples",
+    imagem: "images/novas/Hall de Entrada/Consola branca com 2 gavetas e pernas douradas simples 120x90x35.jpg",
+    categoria: "hall",
+    descricao: "Consola de duas gavetas brancas com estrutura dourada de linhas simples.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-branca-cinza",
+    nome: "Consola branca e cinzenta",
+    imagem: "images/novas/Hall de Entrada/Consola branca com 2 gavetas e pormenor em cinza.jpg",
+    categoria: "hall",
+    descricao: "Consola branca com duas gavetas, moldura cinzenta e pormenores lineares na frente.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-cabide-dourado",
+    nome: "Consola branca com cabide dourado",
+    imagem: "images/novas/Hall de Entrada/Consola branca com pernas douradas + cabide  dourado.jpg",
+    categoria: "hall",
+    descricao: "Conjunto de consola branca com puxadores em losango e cabide de pé dourado.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-espelho-cerejeira",
+    nome: "Consola e espelho em cerejeira e branco",
+    imagem: "images/novas/Hall de Entrada/Consola cerejeira com 2 gavetas em branco+espelho cerejeira e branco.jpg",
+    categoria: "hall",
+    descricao: "Consola com base cruzada e duas gavetas brancas, acompanhada por espelho geométrico.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-degrau-carvalho",
+    nome: "Consola Degrau em carvalho e branco",
+    imagem: "images/novas/Hall de Entrada/Consola degrau carvalho natural e branco.jpeg",
+    categoria: "hall",
+    descricao: "Consola em carvalho natural com duas gavetas brancas a diferentes alturas.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-pau-ferro",
+    nome: "Consola em pau-ferro e branco",
+    imagem: "images/novas/Hall de Entrada/Consola em pau ferro brilhante com 2 gav. em branco.jpeg",
+    categoria: "hall",
+    descricao: "Consola em pau-ferro brilhante com duas gavetas brancas e base cruzada.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-consola-marmore-dourado",
+    nome: "Consola com tampo em mármore e pé dourado",
+    imagem: "images/novas/Hall de Entrada/Consola tampo mármore com pé dourado 140x75x40.jpg",
+    categoria: "hall",
+    descricao: "Consola com tampo escuro e apoios dourados curvos.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-espelho-led-consola-suspensa",
+    nome: "Hall com espelho LED e consola suspensa",
+    imagem: "images/novas/Hall de Entrada/Hall de entrada com espelho meia lua com led +ripado carvalho natural + consola suspensa em bege + banqueta-baú.jpeg",
+    categoria: "hall",
+    descricao: "Conjunto com espelho de meia-lua, ripado em carvalho, consola bege e banqueta-baú.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-sapateira-cerejeira-uma-porta",
+    nome: "Sapateira em cerejeira com uma porta",
+    imagem: "images/novas/Hall de Entrada/Sapateira 1 porta + 1 gaveta cerejeira cantos boleados.jpeg",
+    categoria: "hall",
+    descricao: "Sapateira em cerejeira com uma porta, uma gaveta e cantos boleados.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-sapateira-cerejeira-tres-portas",
+    nome: "Sapateira em cerejeira com três portas",
+    imagem: "images/novas/Hall de Entrada/Sapateira 3 portas + 3 gavetas cerejeira cantos boleados.jpeg",
+    categoria: "hall",
+    descricao: "Sapateira de cantos boleados com três portas e três gavetas em cerejeira.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-sapateira-branca-cinza",
+    nome: "Sapateira branca e cinzenta",
+    imagem: "images/novas/Hall de Entrada/Sapateira branca com 3 portas com pormenor em cinza.jpg",
+    categoria: "hall",
+    descricao: "Sapateira branca de três portas com moldura cinzenta e pormenores lineares.",
+    adicionadoEm: "2026-11-10"
+  },
+  {
+    id: "hall-sapateira-carvalho-branco",
+    nome: "Sapateira de cantos redondos em carvalho e branco",
+    imagem: "images/novas/Hall de Entrada/Sapateira cantos redondos carvalho e portas brancas 120x90x35.jpg",
+    categoria: "hall",
+    descricao: "Sapateira em carvalho com três portas brancas e cantos arredondados.",
+    adicionadoEm: "2026-11-10"
+  }
+];
+
+const PRODUCTS = EXISTING_PRODUCTS.flatMap((product, index) => {
+  const hallProduct = HALL_PRODUCTS[Math.floor(index / 3)];
+  return index % 3 === 2 && hallProduct ? [product, hallProduct] : [product];
+});
+
+PRODUCTS.push(...HALL_PRODUCTS.slice(Math.floor(EXISTING_PRODUCTS.length / 3)));
